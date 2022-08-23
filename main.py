@@ -75,7 +75,7 @@ user_name = (input('''
 	What is your name? 
 	''')).title()
 user = hpc.Student(user_name)
-time.sleep(2)
+time.sleep(1)
 
 # letter_counter = 1
 # action = input(f'''
@@ -89,15 +89,15 @@ time.sleep(2)
 # 	The next day, {letter_counter} letters arrive, addressed to {user_name}.
 # 	Open one of these letters? (Y/N)
 # 	''')
-# time.sleep(2)
+# time.sleep(1)
 # print(f'''
 # 	The letter reads: 
 
 # Dear {user_name}, 
 # ''' + hpi.hogwarts_letter)
-# time.sleep(2)
+# time.sleep(1)
 
 
 # print(diagon_alley(user))
-# time.sleep(3)
+# time.sleep(1)
 # print(user.sort())
