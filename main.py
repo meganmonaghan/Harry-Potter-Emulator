@@ -7,17 +7,52 @@ v_dursley = hpc.Muggle('Vernon')
 h_potter = hpc.Student('Harry', '')
 m_mcgonagall = hpc.Professor('McGonagall', 'Transfiguration')
 
+
+# keeps track of "active users"
+party = []
+party_members = []
+def party_add(*args):
+	global party
+	for x in args:
+		if x not in party:
+			party.append(x)
+			party_members.append(x.name)
+			print(f'''
+		{x.name} has been added to the party.''')
+		else:
+			print(f'''
+		{x.name} is already in the party.''')
+	print('''
+		Current party: ''', party_members)
+
+
+def party_remove(*args):
+	global party
+	for x in args:
+		if x in party:
+			party.remove(x)
+			party_members.remove(x.name)
+			print(f'''
+		{x.name} has been removed from the party.''')
+		else:
+			print(f'''
+		{x.name} is not currently in the party.''')
+	print('''
+		Current party: ''', party_members)
+
+
 # magic access - also hogwarts express?
-def diagon_alley(char):
-	if char.is_magic:
-		char.can_do_magic = True
-		return f'''
+def diagon_alley(group):
+	for x in group:
+		if x.is_magic:
+			x.can_do_magic = True
+			return f'''
 		Tap... tap... tap...
 		Welcome to Diagon Alley!
-		{char.name} can now perform magic.
-		'''
-	else:
-		return f'{char.name} tapped the brick wall, but nothing happened.'
+		{x.name} can now perform magic.
+			'''
+		else:
+			return f'{x.name} tapped the brick wall, but nothing happened.'
 
 # for lumos/nox
 lights = False
@@ -56,6 +91,7 @@ def nox(char):
 		Nox was unsuccessful.
 		'''
 
+# harry's true love spell
 def expelliarmus(char1, char2):
 	if char1.can_do_magic and char2.can_do_magic:
 		char2.can_do_magic = False
@@ -71,33 +107,36 @@ def expelliarmus(char1, char2):
 		return '''
 		Expelliarmus was unsuccessful.
 		'''
+
+# actual storyline code
 user_name = (input('''
-	What is your name? 
+		What is your name? 
 	''')).title()
 user = hpc.Student(user_name)
+party_add(user)
 time.sleep(1)
 
-# letter_counter = 1
-# action = input(f'''
-# 	A letter arrives one day, addressed to {user_name}.
-# 	Open the letter? (Y/N)
-# 	''')
+letter_counter = 1
+action = input(f'''
+		A letter arrives one day, addressed to {user.name}.
+		Open the letter? (Y/N)
+	''')
 
-# while action.upper() != 'Y':
-# 	letter_counter += 1
-# 	action = input(f'''
-# 	The next day, {letter_counter} letters arrive, addressed to {user_name}.
-# 	Open one of these letters? (Y/N)
-# 	''')
-# time.sleep(1)
-# print(f'''
-# 	The letter reads: 
+while action.upper() != 'Y':
+	letter_counter += 1
+	action = input(f'''
+		The next day, {letter_counter} letters arrive, addressed to {user.name}.
+		Open one of these letters? (Y/N)
+	''')
+time.sleep(1)
 
-# Dear {user_name}, 
-# ''' + hpi.hogwarts_letter)
-# time.sleep(1)
+print(f'''
+		The letter reads: 
 
+		Dear {user.name}, 
+''' + hpi.hogwarts_letter)
+time.sleep(1)
 
-# print(diagon_alley(user))
+print(diagon_alley(party))
 # time.sleep(1)
 # print(user.sort())
