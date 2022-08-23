@@ -71,31 +71,31 @@ def expelliarmus(char1, char2):
 		return '''
 		Expelliarmus was unsuccessful.
 		'''
-user_name = input('''
+user_name = (input('''
 	What is your name? 
-	''')
+	''')).title()
 user = hpc.Student(user_name)
 time.sleep(2)
 
-letter_counter = 1
-action = input(f'''
-	A letter arrives one day, addressed to {user_name}.
-	Open the letter? (Y/N)
-	''')
+# letter_counter = 1
+# action = input(f'''
+# 	A letter arrives one day, addressed to {user_name}.
+# 	Open the letter? (Y/N)
+# 	''')
 
-while action.upper() != 'Y':
-	letter_counter += 1
-	action = input(f'''
-	The next day, {letter_counter} letters arrive, addressed to {user_name}.
-	Open one of these letters? (Y/N)
-	''')
-time.sleep(2)
-print(f'''
-	The letter reads: 
+# while action.upper() != 'Y':
+# 	letter_counter += 1
+# 	action = input(f'''
+# 	The next day, {letter_counter} letters arrive, addressed to {user_name}.
+# 	Open one of these letters? (Y/N)
+# 	''')
+# time.sleep(2)
+# print(f'''
+# 	The letter reads: 
 
-Dear {user_name}, 
-''' + hpi.hogwarts_letter)
-time.sleep(2)
+# Dear {user_name}, 
+# ''' + hpi.hogwarts_letter)
+# time.sleep(2)
 
 
 # print(diagon_alley(user))
