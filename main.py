@@ -172,6 +172,10 @@ print(f'''
 		{user.name} travels to London to buy school supplies
 		from Diagon Alley.
 		To enter Diagon Alley, tap three bricks.
+		\x1B[4m             \x1B[0m
+		\x1B[4m| 1 | 2 | 3 |\x1B[0m
+		\x1B[4m| 4 | 5 | 6 |\x1B[0m
+		\x1B[4m| 7 | 8 | 9 |\x1B[0m
 		''')
 action = input(f'''
 		Which bricks does {user.name} tap? Choose three 
@@ -179,15 +183,36 @@ action = input(f'''
 	''')
 tap_list = action.split()
 tap_list.sort()
-
+hint_count = 0
 while tap_list != hpi.tap_solution:
+	hint_count +=1
 	action = input(f'''
+***
 		{user.name} taps three bricks, but nothing happens.
 		Try again.
+		\x1B[4m             \x1B[0m
+		\x1B[4m| 1 | 2 | 3 |\x1B[0m
+		\x1B[4m| 4 | 5 | 6 |\x1B[0m
+		\x1B[4m| 7 | 8 | 9 |\x1B[0m
+
 		Choose three numbers (1-9) separated by spaces.
 		Note: the order of the bricks matter!
 	''')
 	tap_list = action.split()
+	if hint_count == 2:
+		action = input(f'''
+***
+		{user.name} taps three bricks, but nothing happens.
+		Try again.
+		\x1B[4m             \x1B[0m
+		\x1B[4m| 1 | 2 | 3 |\x1B[0m
+		\x1B[4m| 4 | 5 | 6 |\x1B[0m
+		\x1B[4m| 7 | 8 | 9 |\x1B[0m
+		
+		Choose three numbers (1-9) separated by spaces.
+		Hint: try some of the corner bricks!
+	''')
+		tap_list = action.split()
 
 
 print('***')
