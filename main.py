@@ -159,13 +159,14 @@ if action.upper() != 'Y':
 	if action.upper() == action2.upper():
 			print(f'''
 	***
-			{user.name} has chosen not to attend Hogwarts.
+		{user.name} has chosen not to attend Hogwarts.
 
-			Ministry wizards arrive at {user.name}'s home to wipe
-			their memory. {user.name} does not remember the owls,
-			their letter, or any knowledge of the wizarding world.
-			''')
+		Ministry wizards arrive at {user.name}'s home to wipe
+		their memory. {user.name} does not remember the owls,
+		their letter, or any knowledge of the wizarding world.
+		''')
 			sys.exit()
+time.sleep(1)
 
 # diagon alley block
 print('***')
@@ -246,6 +247,17 @@ action = input('''
 
 print('***')
 print(user.access_item(action))
+time.sleep(1)
+
+print('***')
+action = input(f'''
+		Before going shopping, {user.name} needs money!
+
+		Type 'shops' to see the list of locations available
+		in Diagon Alley.
+	''')
+
+
 
 # print('***')
 # print(hpi.september_1)

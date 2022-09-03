@@ -29,6 +29,15 @@ supplies_letter = '''
 
 tap_solution = ['1', '3', '7']
 
+dg_alley_shops = {'Gringotts Wizarding Bank': 'money',
+				'Flourish and Blotts': 'books',
+				'Madame Malkin\'s Robes for All Occasions': ['robes', 'cloak', 'gloves'],
+				'The Apothecary': ['cauldron', 'phials', 'scales', 'telescope'],
+				'Ollivander\'s Wand Shop': 'wand',
+				'Magical Menagerie': ['cat', 'owl', 'toad'],
+				'Leaky Cauldron': 'butterbeer',
+				'Quality Quidditch Supplies': 'broomstick'}
+
 september_1 = '''
 		\x1B[3mChoo choo!\x1B[0m
 		All aboard the Hogwarts Express!
