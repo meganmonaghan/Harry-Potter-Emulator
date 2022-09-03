@@ -11,6 +11,22 @@ hogwarts_letter = '''
 		Deputy Headmistress
 '''
 
+supplies_letter = '''
+		REQUIRED MATERIALS:
+		3 sets of plain work robes (black)
+		1 winter cloak (black, silver fastenings)
+		1 wand
+		1 cauldron (pewter, standard size 2)
+		1 set glass or crystal phials
+		1 telescope
+		1 set brass scales
+
+		Students may also bring an owl OR a cat OR a toad
+
+		PARENTS ARE REMINDED THAT FIRST YEARS ARE NOT
+		ALLOWED THEIR OWN BROOMSTICKS
+	'''
+
 tap_solution = ['1', '3', '7']
 
 september_1 = '''

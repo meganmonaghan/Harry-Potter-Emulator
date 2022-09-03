@@ -139,6 +139,7 @@ print(f'''
 
 		Dear {user.name}, 
 ''' + hpi.hogwarts_letter)
+user.inventory['Supplies Letter'] = hpi.supplies_letter
 time.sleep(1)
 
 print('***')
@@ -146,25 +147,23 @@ action = input('''
 		Send return owl? (Y/N)
 	''')
 
-return_counter = 1
-while action.upper() != 'Y':
-	return_counter +=1
-	action = input(f'''
+if action.upper() != 'Y':
+	action2 = input(f'''
 ***
 		If {user.name} doesn't respond to this owl, they may not 
 		be able to attend Hogwarts.
 		Send return owl? (Y/N)
 	''')
-	if return_counter == 3:
-		print(f'''
-***
-		{user.name} has chosen not to attend Hogwarts.
+	if action.upper() == action2.upper():
+			print(f'''
+	***
+			{user.name} has chosen not to attend Hogwarts.
 
-		Ministry wizards arrive at {user.name}'s home to wipe
-		their memory. {user.name} does not remember the owls,
-		their letter, or any knowledge of the wizarding world.
-		''')
-		sys.exit()
+			Ministry wizards arrive at {user.name}'s home to wipe
+			their memory. {user.name} does not remember the owls,
+			their letter, or any knowledge of the wizarding world.
+			''')
+			sys.exit()
 
 
 print('***')
@@ -196,9 +195,10 @@ while tap_list != hpi.tap_solution:
 		\x1B[4m| 7 | 8 | 9 |\x1B[0m
 
 		Choose three numbers (1-9) separated by spaces.
-		Note: the order of the bricks matter!
+		Note: the order of the bricks doesn't matter!
 	''')
 	tap_list = action.split()
+	tap_list.sort()
 	if hint_count == 2:
 		action = input(f'''
 ***
@@ -213,11 +213,37 @@ while tap_list != hpi.tap_solution:
 		Hint: try some of the corner bricks!
 	''')
 		tap_list = action.split()
+		tap_list.sort()
 
 
 print('***')
 print(diagon_alley(party))
 time.sleep(1)
+
+print('***')
+print(f'''
+		{user.name} has arrived in Diagon Alley!
+
+		Check the user inventory to access the supplies list.
+		''')
+action = input('''
+		Type 'inventory' to access the inventory.
+	''')
+
+while action.lower() != 'inventory':
+	action = input('''
+***
+		Please type 'inventory' to access the inventory.
+	''')
+
+print(user.inven())
+action = input('''
+***
+		Select the item you would like to access.
+	''')
+
+print('***')
+print(user.access_item(action))
 
 # print('***')
 # print(hpi.september_1)
