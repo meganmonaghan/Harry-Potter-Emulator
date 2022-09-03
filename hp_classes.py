@@ -23,9 +23,10 @@ class Student(Wizard):
 		self.name = name
 		self.house = house
 
-	def greeting(self):
-		return f'Hello! My name is {self.name}, and I am a student at Hogwarts.'
+	# def greeting(self):
+	# 	return f'Hello! My name is {self.name}, and I am a student at Hogwarts.'
 
+	# sort into house
 	def sort(self):
 		self.house = random.choice(houses)
 		return f'''
@@ -34,6 +35,7 @@ class Student(Wizard):
 		Congratulations! {self.name} has been sorted into {self.house}!
 		'''
 
+	# display inventory
 	def inven(self):
 		return f'''
 ***
@@ -48,6 +50,7 @@ class Student(Wizard):
 	''')
 		return self.inventory[item]
 
+
 class Professor(Wizard):
 	can_do_magic = True
 
@@ -58,6 +61,7 @@ class Professor(Wizard):
 	def greeting(self):
 		return f'Hello! My name is Professor {self.name}, and I am the {discipline} professor at Hogwarts.'
 
+	# points
 	def give_points(self, char, points):
 		house_points[char.house] += points
 		num = house_points[char.house]

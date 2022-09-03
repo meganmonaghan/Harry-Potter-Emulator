@@ -108,7 +108,9 @@ def expelliarmus(char1, char2):
 		Expelliarmus was unsuccessful.
 		'''
 
-# actual storyline code
+# actual storyline code !!!!
+
+# intro/letter
 user_name = (input('''
 		What is your name? 
 	''')).title()
@@ -165,7 +167,7 @@ if action.upper() != 'Y':
 			''')
 			sys.exit()
 
-
+# diagon alley block
 print('***')
 print(f'''
 		{user.name} travels to London to buy school supplies
