@@ -257,7 +257,17 @@ action = input(f'''
 		in Diagon Alley.
 	''')
 
+while action.lower() != 'shops':
+	action = input('''
+***
+		Please type 'shops' to access the list of shops.
+	''')
 
+print('***')
+print(f'''
+		Shops in Diagon Alley:
+		{','.join(hpi.dg_alley_shops.keys)}
+		''')
 
 # print('***')
 # print(hpi.september_1)
