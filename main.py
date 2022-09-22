@@ -2,6 +2,7 @@ import hp_classes as hpc
 import hp_items as hpi
 import time
 import sys
+import random
 
 # test instances
 v_dursley = hpc.Muggle('Vernon')
@@ -266,9 +267,141 @@ while action.lower() != 'shops':
 print('***')
 print(f'''
 		Shops in Diagon Alley:
-		{','.join(hpi.dg_alley_shops.keys)}
+		{','.join(hpi.year1_dg_alley_shops.keys)}
 		''')
+
+# wand selection function
+wand_options = hpi.wand_properties
+def choose_wand(user):
+	global wand_options
+	action = input(f'''
+***
+		'Welcome to Ollivander's Wand Shop. I am
+		Ollivander. I believe that the wand chooses the
+		wizard, so let us try out a few wands and see
+		what chooses you.
+
+		'{user.name}, are you right- or left-handed?'
+	''')
+
+	action = input('''
+***
+		'I see, I see. Let me pull a few boxes and we
+		can try them out.'
+
+		Enter 'select box' to continue.
+	''')
+
+	while action.lower() != 'select box':
+		action = input('''
+***
+		'Please select a box so that we may proceed.'
+
+		Enter 'select box' to continue.
+	''')
+	action = input(f'''
+***
+		'Ah, yes. A {random.choice(wand_options['Wood'])} wand with
+		a {random.choice(wand_options['Core'])} core. {random.choice(wand_options['Length'])}
+		inches, {random.choice(wand_options['Flexibility'])}.
+		Give it a try, {user.name}.
+
+		'Move the wand around, please.'
+	''')
+	action = input(f'''
+***
+		The wand vibrates slightly, but nothing else happens.
+
+		'No, no, that's not it. I'll just take that one back...
+		Select another wand, please.'
+
+		Enter 'select box' to continue.
+	''')
+	while action.lower() != 'select box':
+		while action.lower() != 'select box':
+			action = input('''
+***
+		'Please select a box so that we may proceed.'
+
+		Enter 'select box' to continue.
+	''')
+	action = input(f'''
+***
+		'Now, this one looks better. Let's see... 
+		{random.choice(wand_options['Wood'])}, {random.choice(wand_options['Core'])} core. {random.choice(wand_options['Length'])} inches, and
+		{random.choice(wand_options['Flexibility'])}. Wave it for me, if you please.'
+	'''	)
+	action = input(f'''
+***
+		The wand has barely started to move when Ollivander snatches
+		it out of {user.name}'s hand.
+
+		'Absolutely not.'
+
+		He walks around the shelves, talking quietly to himself.
+
+		\x1B[3m'Could it be? I suppose it is possible...'\x1B[0m
+
+		Finally, he pulls a thin, narrow box from a shelf and
+		places it on the counter.
+
+		'Open this box, if you please.'
+
+		Open the box to proceed.
+	'''	)
+
+	while 'open' not in action:
+		action = input(f'''
+***
+		'We do not have all day, {user.name}. Please open
+		the box.'
+	''')
+
+	user_wand = tuple((random.choice(wand_options['Wood']),
+						random.choice(wand_options['Core']),
+						random.choice(wand_options['Length']),
+						random.choice(wand_options['Flexibility'])))
+
+	action = input(f'''
+***
+		{user.name} opens the box and holds the wand in their hand.
+
+		'A real beauty, this one. {user_wand[0]} wood, with a
+		particularly fine {user_wand[1]} core. {user_wand[2]} inches,
+		{user_wand[3]}. Try it out.'
+	''')
+	print(f'''
+***
+		At once, a warmth flows from the tips of {user.name}'s fingers
+		up through their arm. The {user_wand[0]} wand moves through the
+		air, leaving behind an arc of shimmering stars. Ollivander
+		watches the stars with satisfaction.
+
+		'Yes, indeed! Very good, very good. And curious...'
+
+		He takes the wand from {user.name} and packs it carefully in
+		its box. Ollivander fixes them with his pale stare.
+
+		'I remember every wand I've ever sold. It is curious that you
+		should be granted this wand when its brother belonged to the
+		greatest -- and darkest -- wizard of all time. I think we must
+		expect great things from you, {user.name}.
+	''')
+
+# gathering items from diagon alley
+# def diagon_alley_get_items(user, shops):
+# 	action = input(f'''{','.join(hpi.year1_dg_alley_shops.keys)}
+# 		Please select a shop to visit, or select
+# 	 	\'exit\' to leave Diagon Alley.''')
+# 	if action.lower() != 'exit':
+# 		return
+# 	elif action.title() not in shops.keys():
+# 		action = input(f'''{','.join(hpi.year1_dg_alley_shops.keys)}
+# 		Please select a shop from this list to visit, or
+# 		select \'exit\' to leave Diagon Alley.''')
+# 	elif action.title() == 'Ollivander\'s Wand Shop':
+
+
 
 # print('***')
 # print(hpi.september_1)
-# # print(user.sort())

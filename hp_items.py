@@ -29,7 +29,7 @@ supplies_letter = '''
 
 tap_solution = ['1', '3', '7']
 
-dg_alley_shops = {'Gringotts Wizarding Bank': 'money',
+year1_dg_alley_shops = {'Gringotts Wizarding Bank': 'money',
 				'Flourish and Blotts': 'books',
 				'Madame Malkin\'s Robes for All Occasions': ['robes', 'cloak', 'gloves'],
 				'The Apothecary': ['cauldron', 'phials', 'scales', 'telescope'],
@@ -37,6 +37,21 @@ dg_alley_shops = {'Gringotts Wizarding Bank': 'money',
 				'Magical Menagerie': ['cat', 'owl', 'toad'],
 				'Leaky Cauldron': 'butterbeer',
 				'Quality Quidditch Supplies': 'broomstick'}
+
+wand_properties = {
+				'Wood': ['Ash', 'Beech', 'Blackthorn', 'Cedar', 'Cherry',
+						'Chestnut', 'Cypress', 'Dogwood', 'Ebony', 'Elder',
+						'Elm', 'Fir', 'Hawthorn', 'Hazel', 'Holly',
+						'Hornbeam', 'Laurel', 'Maple', 'Pine', 'Poplar',
+						'Red Oak', 'Redwood', 'Rowan', 'Spruce',
+						'Sycamore', 'Walnut', 'Willow', 'Yew'],
+				'Core': ['unicorn hair', 'unicorn hair', 'dragon heartstring',
+						'dragon heartstring', 'phoenix feather'],
+				'Length': [9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5,
+						13, 13.5, 14, 14.5],
+				'Flexibility': ['bendy', 'flexible', 'swishy', 'whippy',
+						'springy', 'stiff', 'unyielding', 'inflexible', 'rigid']
+					}
 
 september_1 = '''
 		\x1B[3mChoo choo!\x1B[0m
