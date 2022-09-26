@@ -109,7 +109,9 @@ def expelliarmus(char1, char2):
 		Expelliarmus was unsuccessful.
 		'''
 
+
 # actual storyline code !!!!
+# here we go !!!
 
 # intro/letter
 user_name = (input('''
@@ -387,19 +389,22 @@ def choose_wand(user):
 		greatest -- and darkest -- wizard of all time. I think we must
 		expect great things from you, {user.name}.
 	''')
+	return user_wand
 
 # gathering items from diagon alley
-# def diagon_alley_get_items(user, shops):
-# 	action = input(f'''{','.join(hpi.year1_dg_alley_shops.keys)}
-# 		Please select a shop to visit, or select
-# 	 	\'exit\' to leave Diagon Alley.''')
-# 	if action.lower() != 'exit':
-# 		return
-# 	elif action.title() not in shops.keys():
-# 		action = input(f'''{','.join(hpi.year1_dg_alley_shops.keys)}
-# 		Please select a shop from this list to visit, or
-# 		select \'exit\' to leave Diagon Alley.''')
-# 	elif action.title() == 'Ollivander\'s Wand Shop':
+def diagon_alley_get_items(user, shops):
+	action = input(f'''{', '.join(hpi.year1_dg_alley_shops)}
+		Please select a shop to visit, or select
+	 	'exit' to leave Diagon Alley.''')
+	if action.lower() != 'exit':
+		return
+	elif action.title() not in shops.keys():
+		action = input(f'''{', '.join(hpi.year1_dg_alley_shops)}
+		Please select a shop from this list to visit, or
+		select 'exit' to leave Diagon Alley.''')
+	elif action.title() in shops.keys(): 		
+		if action.title() == 'Ollivander\'s Wand Shop':
+			user_inventory['Wand'] = choose_wand(user)
 
 
 

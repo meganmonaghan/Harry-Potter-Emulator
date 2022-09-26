@@ -17,6 +17,7 @@ houses = ['Gryffindor', 'Ravenclaw', 'Slytherin', 'Hufflepuff']
 class Student(Wizard):
 	can_do_magic = False
 
+	# dict to allow item display name/access "item" as one pair
 	inventory = {}
 
 	def __init__(self, name, house=''):

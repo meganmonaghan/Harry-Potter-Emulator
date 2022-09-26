@@ -32,9 +32,8 @@ def choose_wand(user):
 	''')
 	action = input(f'''
 ***
-		'Ah, yes. A {random.choice(wand_options['Wood'])} wand with
-		a {random.choice(wand_options['Core'])} core. {random.choice(wand_options['Length'])}
-		inches, {random.choice(wand_options['Flexibility'])}.
+		'Ah, yes. A {random.choice(wand_options['Wood'])} wand with a {random.choice(wand_options['Core'])}
+		core. {random.choice(wand_options['Length'])} inches, {random.choice(wand_options['Flexibility'])}.
 		Give it a try, {user.name}.
 
 		'Move the wand around, please.'
@@ -118,10 +117,13 @@ def choose_wand(user):
 		greatest -- and darkest -- wizard of all time. I think we must
 		expect great things from you, {user.name}.
 	''')
+	return user_wand
 
 user_name = input('What is your name?')
 test_user = hpc.Student(user_name)
 
-choose_wand(test_user)
+test_dict = {}
+test_dict['Wand'] = choose_wand(test_user)
+print(test_dict)
 
 
