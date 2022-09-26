@@ -182,7 +182,7 @@ print(f'''
 		''')
 action = input(f'''
 		Which bricks does {user.name} tap? Choose three 
-		different numbers (1-10), separated by spaces.
+		different numbers (1-9), separated by spaces.
 	''')
 tap_list = action.split()
 tap_list.sort()
@@ -267,7 +267,7 @@ while action.lower() != 'shops':
 print('***')
 print(f'''
 		Shops in Diagon Alley:
-		{','.join(hpi.year1_dg_alley_shops.keys)}
+{', '.join(hpi.year1_dg_alley_shops)}
 		''')
 
 # wand selection function

@@ -17,7 +17,7 @@ houses = ['Gryffindor', 'Ravenclaw', 'Slytherin', 'Hufflepuff']
 class Student(Wizard):
 	can_do_magic = False
 
-	inventory = []
+	inventory = {}
 
 	def __init__(self, name, house=''):
 		self.name = name
@@ -40,7 +40,7 @@ class Student(Wizard):
 		return f'''
 ***
 		Inventory:
-		{','.join(self.inventory)}'''
+		{', '.join(self.inventory)}'''
 
 	def access_item(self, item):
 		while item not in self.inventory:
@@ -48,7 +48,7 @@ class Student(Wizard):
 		Hmm... that item does not appear to be in your inventory.
 		Try again.
 	''')
-		return item
+		return self.inventory[item]
 
 
 class Professor(Wizard):
