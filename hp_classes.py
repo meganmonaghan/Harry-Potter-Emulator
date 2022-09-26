@@ -43,8 +43,16 @@ class Student(Wizard):
 		Inventory:
 		{', '.join(self.inventory)}'''
 
+	def add_to_inventory(self, item_name, item):
+		if item_name.title() not in self.inventory.keys():
+			self.inventory[item_name.title()] = item
+			return f'''
+		{item_name} has been added to the inventory.'''
+			self.inven()
+
+
 	def access_item(self, item):
-		while item not in self.inventory:
+		while item.title() not in self.inventory:
 			item = input('''
 		Hmm... that item does not appear to be in your inventory.
 		Try again.

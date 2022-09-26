@@ -144,7 +144,7 @@ print(f'''
 
 		Dear {user.name}, 
 ''' + hpi.hogwarts_letter)
-user.inventory['Supplies Letter'] = hpi.supplies_letter
+user.add_to_inventory('Supplies Letter', hpi.supplies_letter)
 time.sleep(1)
 
 print('***')
@@ -404,7 +404,7 @@ def diagon_alley_get_items(user, shops):
 		select 'exit' to leave Diagon Alley.''')
 	elif action.title() in shops.keys(): 		
 		if action.title() == 'Ollivander\'s Wand Shop':
-			user_inventory['Wand'] = choose_wand(user)
+			user.add_to_inventory('Wand', choose_wand(user))
 
 
 

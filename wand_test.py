@@ -122,8 +122,7 @@ def choose_wand(user):
 user_name = input('What is your name?')
 test_user = hpc.Student(user_name)
 
-test_dict = {}
-test_dict['Wand'] = choose_wand(test_user)
-print(test_dict)
+test_user.add_to_inventory('Wand', choose_wand(test_user))
+print(test_user.inven())
 
 
