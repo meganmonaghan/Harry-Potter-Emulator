@@ -29,14 +29,14 @@ supplies_letter = '''
 
 tap_solution = ['1', '3', '7']
 
-shop_item_dict = {'1. Gringotts Wizarding Bank': 'money',
-				'2. Flourish and Blotts': 'books',
-				'3. Madame Malkin\'s Robes for All Occasions': ['robes', 'cloak', 'gloves'],
-				'4. The Apothecary': ['cauldron', 'phials', 'scales', 'telescope'],
-				"5. Ollivander's Wand Shop": 'wand',
-				'6. Magical Menagerie': ['cat', 'owl', 'toad'],
-				'7. Leaky Cauldron': 'butterbeer',
-				'8. Quality Quidditch Supplies': 'broomstick'}
+shop_item_dict = {1: 'money',
+				2: 'books',
+				3: ['robes', 'cloak', 'gloves'],
+				4: ['cauldron', 'phials', 'scales', 'telescope'],
+				5: 'wand',
+				6: ['cat', 'owl', 'toad'],
+				7: 'butterbeer',
+				8: 'broomstick'}
 
 year1_dg_alley_shops = ['1. Gringotts Wizarding Bank',
 						'2. Flourish and Blotts',

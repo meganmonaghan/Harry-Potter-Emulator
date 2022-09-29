@@ -119,10 +119,75 @@ def choose_wand(user):
 	''')
 	return user_wand
 
-user_name = input('What is your name?')
+# gathering items from diagon alley
+# THIS DOES NOT WORK YOU NEED TO FIX IT
+def diagon_alley_get_items(user, shops):
+	action = int(input(f'''
+***
+		{', '.join(shops)}
+
+		Please select a shop number to visit, or select
+		 '0' to leave Diagon Alley.
+
+		NOTE: If you leave Diagon Alley, you cannot return this
+		summer. Make sure you have all of your items before 
+		leaving!		
+	'''))
+	while action != 0:
+		if action not in [1, 2, 3, 4, 5, 6, 7, 8]:
+			action = input(f'''
+	***
+			{', '.join(shops)}
+
+		Please select a shop from this list to visit, or
+		select '0' to leave Diagon Alley. Only submit a
+		number between 1 and 8, with no spaces before or
+		after.
+	''')
+		elif action == 5:
+			new_wand = choose_wand(user)		
+			user.add_to_inventory('Wand', new_wand)
+			# this would not be 'action' but rather the shop name
+			# shops['\u0336'.join(action) + '\u0336'] = shops.pop(action)
+				# test code
+				# return shops
+			action = int(input(f'''
+***
+		{', '.join(shops)}
+
+		Please select another shop number to visit, or select
+		 '0' to leave Diagon Alley.
+
+		NOTE: If you leave Diagon Alley, you cannot return this
+		summer. Make sure you have all of your items before 
+		leaving!
+	''')
+		else:
+			current_shop = shops[action - 1]
+			print(f'''
+***
+		Welcome to {current_shop}!
+
+		Items available for purchase:
+		{shops[action - 1]}
+		''')
+
+			action = int(input(f'''
+***
+		{', '.join(shops)}
+
+		Please select another shop number to visit, or select
+		 '0' to leave Diagon Alley.
+
+		NOTE: If you leave Diagon Alley, you cannot return this
+		summer. Make sure you have all of your items before 
+		leaving!
+	''')
+
+
+user_name = input('What is your name? ')
 test_user = hpc.Student(user_name)
+print(diagon_alley_get_items(test_user, hpi.year1_dg_alley_shops))
 
-test_user.add_to_inventory('Wand', choose_wand(test_user))
-print(test_user.inven())
-
-
+# test_user.add_to_inventory('Wand', choose_wand(test_user))
+# print(test_user.inven())
