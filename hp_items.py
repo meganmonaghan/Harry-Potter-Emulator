@@ -29,14 +29,23 @@ supplies_letter = '''
 
 tap_solution = ['1', '3', '7']
 
-year1_dg_alley_shops = {'Gringotts Wizarding Bank': 'money',
-				'Flourish and Blotts': 'books',
-				'Madame Malkin\'s Robes for All Occasions': ['robes', 'cloak', 'gloves'],
-				'The Apothecary': ['cauldron', 'phials', 'scales', 'telescope'],
-				'Ollivander\'s Wand Shop': 'wand',
-				'Magical Menagerie': ['cat', 'owl', 'toad'],
-				'Leaky Cauldron': 'butterbeer',
-				'Quality Quidditch Supplies': 'broomstick'}
+shop_item_dict = {'1. Gringotts Wizarding Bank': 'money',
+				'2. Flourish and Blotts': 'books',
+				'3. Madame Malkin\'s Robes for All Occasions': ['robes', 'cloak', 'gloves'],
+				'4. The Apothecary': ['cauldron', 'phials', 'scales', 'telescope'],
+				"5. Ollivander's Wand Shop": 'wand',
+				'6. Magical Menagerie': ['cat', 'owl', 'toad'],
+				'7. Leaky Cauldron': 'butterbeer',
+				'8. Quality Quidditch Supplies': 'broomstick'}
+
+year1_dg_alley_shops = ['1. Gringotts Wizarding Bank',
+						'2. Flourish and Blotts',
+						'3. Madame Malkin\'s Robes for All Occasions',
+						'4. The Apothecary',
+						'5. Ollivander\'s Wand Shop',
+						'6. Magical Menagerie',
+						'7. Leaky Cauldron',
+						'8. Quality Quidditch Supplies']
 
 wand_properties = {
 				'Wood': ['Ash', 'Beech', 'Blackthorn', 'Cedar', 'Cherry',

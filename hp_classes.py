@@ -43,6 +43,7 @@ class Student(Wizard):
 		Inventory:
 		{', '.join(self.inventory)}'''
 
+
 	def add_to_inventory(self, item_name, item):
 		if item_name.title() not in self.inventory.keys():
 			self.inventory[item_name.title()] = item
@@ -57,7 +58,7 @@ class Student(Wizard):
 		Hmm... that item does not appear to be in your inventory.
 		Try again.
 	''')
-		return self.inventory[item]
+		return self.inventory[item.title()]
 
 
 class Professor(Wizard):

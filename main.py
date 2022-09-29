@@ -392,21 +392,45 @@ def choose_wand(user):
 	return user_wand
 
 # gathering items from diagon alley
+# THIS DOES NOT WORK YOU NEED TO FIX IT
 def diagon_alley_get_items(user, shops):
-	action = input(f'''{', '.join(hpi.year1_dg_alley_shops)}
-		Please select a shop to visit, or select
-	 	'exit' to leave Diagon Alley.''')
-	if action.lower() != 'exit':
-		return
-	elif action.title() not in shops.keys():
-		action = input(f'''{', '.join(hpi.year1_dg_alley_shops)}
+	shops_visited = []
+	while shops_visited.sorted() != range(1,9):
+		action = input(f'''
+***
+		Please select a shop number to visit, or select
+		 '0' to leave Diagon Alley.
+
+		NOTE: If you leave Diagon Alley, you cannot return this
+		summer. Make sure you have all of your items before 
+		leaving!		
+	''')
+		if action == 0:
+			# placeholder code
+			return 'Exited function'
+		elif action not in range(1,9):
+			action = input(f'''
+***
+		{', '.join(shops)}
+
 		Please select a shop from this list to visit, or
-		select 'exit' to leave Diagon Alley.''')
-	elif action.title() in shops.keys(): 		
-		if action.title() == 'Ollivander\'s Wand Shop':
+		select '0' to leave Diagon Alley. Only submit a
+		number between 1 and 8, with no spaces before or
+		after.
+	''')
+		elif action == 5:
+			shops_visited.append(5)		
 			user.add_to_inventory('Wand', choose_wand(user))
+			shops['\u0336'.join(action) + '\u0336'] = shops.pop(action)
+			# test code
+			# return shops
+		else:
+			shops_visited.append(action)
+			current_shop = shops[action - 1]
+			# placeholder
+			return f'current shop: {current_shop}'
 
-
+print(diagon_alley_get_items(user, hpi.year1_dg_alley_shops)
 
 # print('***')
 # print(hpi.september_1)
