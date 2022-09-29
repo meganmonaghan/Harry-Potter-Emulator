@@ -20,9 +20,10 @@ class Student(Wizard):
 	# dict to allow item display name/access "item" as one pair
 	inventory = {}
 
-	def __init__(self, name, house=''):
+	def __init__(self, name, house='', wand=''):
 		self.name = name
 		self.house = house
+		self.wand = wand
 
 	# def greeting(self):
 	# 	return f'Hello! My name is {self.name}, and I am a student at Hogwarts.'
@@ -35,6 +36,10 @@ class Student(Wizard):
 		Sorting... sorting...
 		Congratulations! {self.name} has been sorted into {self.house}!
 		'''
+
+	# give a wand
+	def get_wand(self, wand_item):
+		self.wand = wand_item
 
 	# display inventory
 	def inven(self):

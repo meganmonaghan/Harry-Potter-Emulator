@@ -119,8 +119,9 @@ def choose_wand(user):
 	''')
 	return user_wand
 
-user_name = input('What is your name? ')
-test_user = hpc.Student(user_name)
+if __name__ == 'main':
+	user_name = input('What is your name? ')
+	test_user = hpc.Student(user_name)
 
-test_user.add_to_inventory('Wand', choose_wand(test_user))
-print(test_user.inven())
+	test_user.add_to_inventory('Wand', choose_wand(test_user))
+	print(test_user.inven())
