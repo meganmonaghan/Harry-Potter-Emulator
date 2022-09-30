@@ -49,7 +49,7 @@ class Student(Wizard):
 		{', '.join(self.inventory)}'''
 
 
-	def add_to_inventory(self, item_name, item):
+	def add_to_inventory(self, item):
 		if item_name.title() not in self.inventory.keys():
 			self.inventory[item_name.title()] = item
 			return f'''
