@@ -164,7 +164,7 @@ def d_alley_get_items(person, shop_list, shop_dict):
 		numbers_submitted.append(5)
 		items_obtained.append(shop_dict[5].title())
 	person.can_do_magic = False
-	time.sleep(1)
+	time.sleep(3)
 	return f'''
 ***
 		As {person.name} finishes up their school shopping, they

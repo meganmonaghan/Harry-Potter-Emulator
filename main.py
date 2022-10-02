@@ -271,5 +271,7 @@ while action.lower() != 'shops':
 # diagon alley item purchasing
 print(dat.d_alley_get_items(user, hpi.year1_dg_alley_shops, hpi.shop_item_dict))
 
-# print('***')
-# print(hpi.september_1)
+# september first woooo
+time.sleep(2)
+print('***')
+print(hpi.september_1)
