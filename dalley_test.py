@@ -1,143 +1,178 @@
 import hp_items as hpi 
 import hp_classes as hpc
 from wand_test import choose_wand, wand_options
+import time
 
-# test_list = [1, 2, 3, 4, 5, 6, 7, 8]
-# test_dict = {1: 'one', 2: 'two', 3: 'three', 4: 'four',
-# 			5: 'five', 6: 'six', 7: 'seven', 8: 'eight'}
-
-def say_the_name(name):
-	print(f'''
-	*
-		the name {name}! it worked!
-	*''')
-
-def d_alley_get_items(person, test_lst, test_dict):
+def d_alley_get_items(person, shop_list, shop_dict):
 	numbers_submitted = []
 	shops_visited = []
 	items_obtained = []
 	action = int(input(f'''
 ***
-		hey, submit a number between 1-8, or 0 to exit.
+		{', '.join(shop_list)}
+		
+		Please select a shop number to visit, or select
+		 '0' to leave Diagon Alley.
 
-		shops visited: {shops_visited}
+		NOTE: If {person.name} leaves Diagon Alley, they cannot
+		return this summer. Make sure they have all of their 
+		items before leaving!
 	'''))
 	while action != 0:
 		# non-shop submission
 		if action not in list(range(1,9)):
 			if action == 111:
+				time.sleep(1)
 				action = int(input(f'''
 ***
-		items purchased: {items_obtained}
+		Items purchased: {items_obtained}
 
-		submit a number between 1-8 to visit the shop,
-		or 0 to exit.
+		Please select a shop number to visit, or select
+		 '0' to leave Diagon Alley.
 	'''))
 			else:
 				action = int(input(f'''
 ***
-		hey, that's not a number between 1-8.
+		Please only select a shop number between 1-8, or
+		select '0' to leave Diagon Alley.
+		Enter '111' to check what {person.name} has purchased so far.
 
-		try again. submit a number between 1-8, or 0 to exit.
-		enter '111' to check what you've purchased so far.
-
-		shops visited: {shops_visited}
+		Shops visited: {shops_visited}
 	'''))
 		# shop submissions
 		elif action == 5 and action not in numbers_submitted:
+			print(f'''
+***
+		Now entering Ollivander's Wand Shop...
+			''')
+			time.sleep(1)
 			user_wand = choose_wand(person)
-			user.get_wand(user_wand)
+			person.get_wand(user_wand)
 			numbers_submitted.append(action)
-			shops_visited.append((test_lst[action - 1][3:]))
-			items_obtained.append(test_dict[action].title())
+			shops_visited.append((shop_list[action - 1][3:]))
+			items_obtained.append(shop_dict[action].title())
+			time.sleep(1)
 			action = int(input(f'''
 ***
-		shops visited: {shops_visited}
+		{', '.join(shop_list)}
 
-		submit another number between 1-8, or 0 to exit.
-		enter '111' to check what you've purchased so far.
+		Please select another shop number to visit, or
+		select '0' to leave Diagon Alley.
+		Enter '111' to check what {person.name} has purchased so far.
+
+		Shops visited: {shops_visited}
 	'''))
 		# shops with multiple items
 		elif action in [3, 4, 6]:
 			if action == 6:
+				time.sleep(1)
 				numbers_submitted.append(6)
 				pet_action = input(f'''
 ***
-		welcome to the Magical Menagerie, home of all
+		Welcome to the Magical Menagerie, home of all
 		Hogwarts-approved pets!
 
 		Pets available for purchase:
-		{', '.join(test_dict[action])}
+		{', '.join(shop_dict[action])}
 
-		select an animal to purchase, or enter '0' to
+		Select an animal to purchase, or enter '0' to
 		return to the shops menu.
 	''')
-				if pet_action in test_dict[6]:
+				if pet_action in shop_dict[6]:
+					time.sleep(1)
 					items_obtained.append(pet_action.title())
-					shops_visited.append((test_lst[5][3:]))
+					shops_visited.append((shop_list[5][3:]))
 					action = int(input(f'''
 ***
-		congratulations on your new {pet_action}!
+		Congratulations on your new {pet_action}!
 
-		shops visited: {shops_visited}
+		{', '.join(shop_list)}
 
-		submit a number 1-8 to visit, or 0 to exit.
-		enter '111' to check what you've purchased so far.
+		Please select another shop number to visit, or
+		select '0' to leave Diagon Alley.
+		Enter '111' to check what {person.name} has purchased so far.
+
+		Shops visited: {shops_visited}
 	'''))
 				elif pet_action == '0':
-					shops_visited.append((test_lst[5][3:]))
-					action = int(input('''
+					time.sleep(1)
+					shops_visited.append((shop_list[5][3:]))
+					action = int(input(f'''
 ***
-		no pet selected.
+		No pet selected.
 
-		submit a number 1-8 to visit, or 0 to exit.
+		{', '.join(shop_list)}
+
+		Please select another shop number to visit, or
+		select '0' to leave Diagon Alley.
+		Enter '111' to check what {person.name} has purchased so far.
+
+		Shops visited: {shops_visited}
 	'''))
-
-			print(f'''
-		nice choice!''')
-			if action not in numbers_submitted and action != 111:
-				numbers_submitted.append(action)
-				shops_visited.append((test_lst[action - 1][3:]))
-				for x in test_dict[action]:
-					items_obtained.append(x.title())
-			action = int(input(f'''
+			else:
+				if action not in numbers_submitted and action != 111:
+					numbers_submitted.append(action)
+					shops_visited.append((shop_list[action - 1][3:]))
+					for x in shop_dict[action]:
+						items_obtained.append(x.title())
+				time.sleep(1)
+				action = int(input(f'''
 ***
-		shops visited: {shops_visited}
+		{person.name} enters {shop_list[action-1][3:]} and 
+		purchases their necessary items.
 
-		submit another number between 1-8, or 0 to exit.
-		enter '111' to check what you've purchased so far.
+***
+		{', '.join(shop_list)}
+
+		Please select another shop number to visit, or
+		select '0' to leave Diagon Alley.
+		Enter '111' to check what {person.name} has purchased so far.
+
+		Shops visited: {shops_visited}
 	'''))
 		# shops with one item
 		else:
-			print(f'''
-		nice choice!''')
 			if action not in numbers_submitted:
 				numbers_submitted.append(action)
-				shops_visited.append((test_lst[action - 1][3:]))
-				items_obtained.append(test_dict[action].title())
+				shops_visited.append((shop_list[action - 1][3:]))
+				items_obtained.append(shop_dict[action].title())
+			time.sleep(1)
 			action = int(input(f'''
 ***
-		shops visited: {shops_visited}
+		{person.name} enters {shop_list[action-1][3:]} and 
+		purchases their necessary items.
 
-		submit another number between 1-8, or 0 to exit.
-		enter '111' to check what you've purchased so far.
+***
+		{', '.join(shop_list)}
+
+		Please select another shop number to visit, or
+		select '0' to leave Diagon Alley.
+		Enter '111' to check what {person.name} has purchased so far.
+
+		Shops visited: {shops_visited}
 	'''))
 	if 5 not in numbers_submitted:
+		time.sleep(1)
 		print(f'''
 ***
 		{person.name} cannot leave Diagon Alley without obtaining
 		a wand! Heading to Ollivander's...
 	''')
+		time.sleep(1)
 		user_wand = choose_wand(person)
 		user.get_wand(user_wand)
 		numbers_submitted.append(5)
-		items_obtained.append(test_dict[5].title())
+		items_obtained.append(shop_dict[5].title())
 	person.can_do_magic = False
+	time.sleep(1)
 	return f'''
 ***
-		now leaving Diagon Alley. have a good day!
-		items purchased: {items_obtained}
+		As {person.name} finishes up their school shopping, they
+		take one last look around at the bustling street. To think,
+		in only a few weeks, their life at Hogwarts would begin...
 		'''
-user = hpc.Student('Megan')
 
-print(d_alley_get_items(user, hpi.year1_dg_alley_shops, hpi.shop_item_dict))
+if __name__ == '__main__':
+	user = hpc.Student('Megan')
+
+	print(d_alley_get_items(user, hpi.year1_dg_alley_shops, hpi.shop_item_dict))

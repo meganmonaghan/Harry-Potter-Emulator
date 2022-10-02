@@ -1,5 +1,6 @@
 import hp_classes as hpc
 import hp_items as hpi
+import time
 import random
 
 wand_options = hpi.wand_properties
@@ -14,7 +15,7 @@ def choose_wand(user):
 
 		'{user.name}, are you right- or left-handed?'
 	''')
-
+	time.sleep(1)
 	action = input('''
 ***
 		'I see, I see. Let me pull a few boxes and we
@@ -30,6 +31,7 @@ def choose_wand(user):
 
 		Enter 'select box' to continue.
 	''')
+	time.sleep(1)
 	action = input(f'''
 ***
 		'Ah, yes. A {random.choice(wand_options['Wood'])} wand with a {random.choice(wand_options['Core'])}
@@ -38,6 +40,7 @@ def choose_wand(user):
 
 		'Move the wand around, please.'
 	''')
+	time.sleep(1)
 	action = input(f'''
 ***
 		The wand vibrates slightly, but nothing else happens.
@@ -48,19 +51,20 @@ def choose_wand(user):
 		Enter 'select box' to continue.
 	''')
 	while action.lower() != 'select box':
-		while action.lower() != 'select box':
-			action = input('''
+		action = input('''
 ***
 		'Please select a box so that we may proceed.'
 
 		Enter 'select box' to continue.
 	''')
+	time.sleep(1)
 	action = input(f'''
 ***
 		'Now, this one looks better. Let's see... 
 		{random.choice(wand_options['Wood'])}, {random.choice(wand_options['Core'])} core. {random.choice(wand_options['Length'])} inches, and
 		{random.choice(wand_options['Flexibility'])}. Wave it for me, if you please.'
 	'''	)
+	time.sleep(1)
 	action = input(f'''
 ***
 		The wand has barely started to move when Ollivander snatches
@@ -91,7 +95,7 @@ def choose_wand(user):
 						random.choice(wand_options['Core']),
 						random.choice(wand_options['Length']),
 						random.choice(wand_options['Flexibility'])))
-
+	time.sleep(1)
 	action = input(f'''
 ***
 		{user.name} opens the box and holds the wand in their hand.
@@ -100,6 +104,7 @@ def choose_wand(user):
 		particularly fine {user_wand[1]} core. {user_wand[2]} inches,
 		{user_wand[3]}. Try it out.'
 	''')
+	time.sleep(1)
 	print(f'''
 ***
 		At once, a warmth flows from the tips of {user.name}'s fingers
@@ -108,14 +113,16 @@ def choose_wand(user):
 		watches the stars with satisfaction.
 
 		'Yes, indeed! Very good, very good. And curious...'
-
+	''')
+	time.sleep(1)
+	print(f''')
 		He takes the wand from {user.name} and packs it carefully in
 		its box. Ollivander fixes them with his pale stare.
 
 		'I remember every wand I've ever sold. It is curious that you
 		should be granted this wand when its brother belonged to the
 		greatest -- and darkest -- wizard of all time. I think we must
-		expect great things from you, {user.name}.
+		expect great things from you, {user.name}.'
 	''')
 	return user_wand
 

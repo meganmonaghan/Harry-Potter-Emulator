@@ -1,5 +1,6 @@
 import hp_classes as hpc
 import hp_items as hpi
+import dalley_test as dat
 import time
 import sys
 import random
@@ -144,7 +145,7 @@ print(f'''
 
 		Dear {user.name}, 
 ''' + hpi.hogwarts_letter)
-user.add_to_inventory('Supplies Letter', hpi.supplies_letter)
+user.add_to_inventory('Supplies Letter')
 time.sleep(1)
 
 print('***')
@@ -221,13 +222,12 @@ while tap_list != hpi.tap_solution:
 		tap_list = action.split()
 		tap_list.sort()
 
-
 print('***')
 print(diagon_alley(party))
 time.sleep(1)
 
-print('***')
 print(f'''
+***
 		{user.name} has arrived in Diagon Alley!
 
 		Check the user inventory to access the supplies list.
@@ -248,13 +248,16 @@ action = input('''
 		Select the item you would like to access.
 	''')
 
-print('***')
-print(user.access_item(action))
+print(f'''
+***
+		{hpi.supplies_letter}
+	''')
 time.sleep(1)
 
-print('***')
 action = input(f'''
-		Before going shopping, {user.name} needs money!
+***
+		Before going shopping, {user.name} needs to
+		know where to go!
 
 		Type 'shops' to see the list of locations available
 		in Diagon Alley.
@@ -265,172 +268,8 @@ while action.lower() != 'shops':
 ***
 		Please type 'shops' to access the list of shops.
 	''')
-
-print('***')
-print(f'''
-		Shops in Diagon Alley:
-{', '.join(hpi.year1_dg_alley_shops)}
-		''')
-
-# wand selection function
-wand_options = hpi.wand_properties
-def choose_wand(user):
-	global wand_options
-	action = input(f'''
-***
-		'Welcome to Ollivander's Wand Shop. I am
-		Ollivander. I believe that the wand chooses the
-		wizard, so let us try out a few wands and see
-		what chooses you.
-
-		'{user.name}, are you right- or left-handed?'
-	''')
-
-	action = input('''
-***
-		'I see, I see. Let me pull a few boxes and we
-		can try them out.'
-
-		Enter 'select box' to continue.
-	''')
-
-	while action.lower() != 'select box':
-		action = input('''
-***
-		'Please select a box so that we may proceed.'
-
-		Enter 'select box' to continue.
-	''')
-	action = input(f'''
-***
-		'Ah, yes. A {random.choice(wand_options['Wood'])} wand with
-		a {random.choice(wand_options['Core'])} core. {random.choice(wand_options['Length'])}
-		inches, {random.choice(wand_options['Flexibility'])}.
-		Give it a try, {user.name}.
-
-		'Move the wand around, please.'
-	''')
-	action = input(f'''
-***
-		The wand vibrates slightly, but nothing else happens.
-
-		'No, no, that's not it. I'll just take that one back...
-		Select another wand, please.'
-
-		Enter 'select box' to continue.
-	''')
-	while action.lower() != 'select box':
-		while action.lower() != 'select box':
-			action = input('''
-***
-		'Please select a box so that we may proceed.'
-
-		Enter 'select box' to continue.
-	''')
-	action = input(f'''
-***
-		'Now, this one looks better. Let's see... 
-		{random.choice(wand_options['Wood'])}, {random.choice(wand_options['Core'])} core. {random.choice(wand_options['Length'])} inches, and
-		{random.choice(wand_options['Flexibility'])}. Wave it for me, if you please.'
-	'''	)
-	action = input(f'''
-***
-		The wand has barely started to move when Ollivander snatches
-		it out of {user.name}'s hand.
-
-		'Absolutely not.'
-
-		He walks around the shelves, talking quietly to himself.
-
-		\x1B[3m'Could it be? I suppose it is possible...'\x1B[0m
-
-		Finally, he pulls a thin, narrow box from a shelf and
-		places it on the counter.
-
-		'Open this box, if you please.'
-
-		Open the box to proceed.
-	'''	)
-
-	while 'open' not in action:
-		action = input(f'''
-***
-		'We do not have all day, {user.name}. Please open
-		the box.'
-	''')
-
-	user_wand = tuple((random.choice(wand_options['Wood']),
-						random.choice(wand_options['Core']),
-						random.choice(wand_options['Length']),
-						random.choice(wand_options['Flexibility'])))
-
-	action = input(f'''
-***
-		{user.name} opens the box and holds the wand in their hand.
-
-		'A real beauty, this one. {user_wand[0]} wood, with a
-		particularly fine {user_wand[1]} core. {user_wand[2]} inches,
-		{user_wand[3]}. Try it out.'
-	''')
-	print(f'''
-***
-		At once, a warmth flows from the tips of {user.name}'s fingers
-		up through their arm. The {user_wand[0]} wand moves through the
-		air, leaving behind an arc of shimmering stars. Ollivander
-		watches the stars with satisfaction.
-
-		'Yes, indeed! Very good, very good. And curious...'
-
-		He takes the wand from {user.name} and packs it carefully in
-		its box. Ollivander fixes them with his pale stare.
-
-		'I remember every wand I've ever sold. It is curious that you
-		should be granted this wand when its brother belonged to the
-		greatest -- and darkest -- wizard of all time. I think we must
-		expect great things from you, {user.name}.
-	''')
-	return user_wand
-
-# gathering items from diagon alley
-# THIS DOES NOT WORK YOU NEED TO FIX IT
-def diagon_alley_get_items(user, shops):
-	shops_visited = []
-	while shops_visited.sorted() != range(1,9):
-		action = input(f'''
-***
-		Please select a shop number to visit, or select
-		 '0' to leave Diagon Alley.
-
-		NOTE: If you leave Diagon Alley, you cannot return this
-		summer. Make sure you have all of your items before 
-		leaving!		
-	''')
-		if action == 0:
-			# placeholder code
-			return 'Exited function'
-		elif action not in range(1,9):
-			action = input(f'''
-***
-		{', '.join(shops)}
-
-		Please select a shop from this list to visit, or
-		select '0' to leave Diagon Alley. Only submit a
-		number between 1 and 8, with no spaces before or
-		after.
-	''')
-		elif action == 5:
-			shops_visited.append(5)		
-			user.add_to_inventory('Wand', choose_wand(user))
-			shops['\u0336'.join(action) + '\u0336'] = shops.pop(action)
-			# test code
-			# return shops
-		else:
-			shops_visited.append(action)
-			current_shop = shops[action - 1]
-			# placeholder
-			return f'current shop: {current_shop}'
-
-print(diagon_alley_get_items(user, hpi.year1_dg_alley_shops)
+# diagon alley item purchasing
+print(dat.d_alley_get_items(user, hpi.year1_dg_alley_shops, hpi.shop_item_dict))
 
 # print('***')
 # print(hpi.september_1)

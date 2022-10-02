@@ -17,8 +17,8 @@ houses = ['Gryffindor', 'Ravenclaw', 'Slytherin', 'Hufflepuff']
 class Student(Wizard):
 	can_do_magic = False
 
-	# dict to allow item display name/access "item" as one pair
-	inventory = {}
+	# as of 10/2 list, anything that's an item/name pair will be an attribute
+	inventory = []
 
 	def __init__(self, name, house='', wand=''):
 		self.name = name
@@ -50,10 +50,10 @@ class Student(Wizard):
 
 
 	def add_to_inventory(self, item):
-		if item_name.title() not in self.inventory.keys():
-			self.inventory[item_name.title()] = item
+		if item.title() not in self.inventory:
+			self.inventory.append(item.title())
 			return f'''
-		{item_name} has been added to the inventory.'''
+		{item.title()} has been added to the inventory.'''
 			self.inven()
 
 
@@ -63,7 +63,7 @@ class Student(Wizard):
 		Hmm... that item does not appear to be in your inventory.
 		Try again.
 	''')
-		return self.inventory[item.title()]
+		return item
 
 
 class Professor(Wizard):
