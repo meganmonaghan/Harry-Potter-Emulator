@@ -11,6 +11,7 @@ test_student_list = ['Hannah Abbott', 'Terry Boot', 'Vincent Crabbe',
 					'Parvati Patil', 'Pansy Parkinson', 'Seamus Finnegan',
 					'Dean Thomas', 'Neville Longbottom', 'Justin Finch-Fletchley']
 
+# create the train
 def generate_hogwarts_express(train_dict, student_list):
 	for x in range(1,7):
 		students_in_car = []
@@ -21,6 +22,7 @@ def generate_hogwarts_express(train_dict, student_list):
 		test_train_dict[x] = students_in_car
 	return train_dict
 
+# actually go on the train
 def navigate_hogwarts_express(person, train_dict):
 	cars_visited = []
 	visit_tally = 0
@@ -31,18 +33,19 @@ def navigate_hogwarts_express(person, train_dict):
 
 		select a car between 1-6.
 	'''))
-	while visit_tally < 3:
-		if action not in cars_visited:
-			visit_tally += 1
-			cars_visited.append(action)
-# 			print(f'''
-# ***
-# 		{person.name} enters car {action}.
-
-# 		students in car:
-# 		{', '.join(train_dict[action])}
-# ''')
+	while visit_tally < 2:
+		if action not in range(1,7):
 			action = int(input(f'''
+***
+		sorry, the hogwarts express does not have
+		a car {action}. please select a car between
+		1-6 for {person.name} to enter.
+	'''))
+		else:
+			if action not in cars_visited:
+				visit_tally += 1
+				cars_visited.append(action)
+				action = int(input(f'''
 ***
 		{person.name} enters car {action}.
 
@@ -55,8 +58,8 @@ def navigate_hogwarts_express(person, train_dict):
 		what car do they visit next?
 		select a new car between 1-6.
 	'''))
-		else:
-			action = int(input(f'''
+			else:
+				action = int(input(f'''
 ***
 		{person.name} has already entered that car.
 
@@ -76,31 +79,39 @@ def navigate_hogwarts_express(person, train_dict):
 		buy snacks off the trolley? (Y/N)
 	''')
 	if action.lower() == 'y':
-		print = (f'''
+		print(f'''
 ***
 		{person.name} purchases a few snacks and
 		continues to walk along the corridor towards
 		another car.
 	''')
 	else:
-		print = (f'''
+		print(f'''
 ***
 		{person.name} is tempted by the snacks, but
 		ultimately decides against it. they
 		continue to walk along the corridor towards
 		another car.
 	''')	
-		action = int(input(f'''
+	action = int(input(f'''
 ***
 		which car does {person.name} enter
 		next? select a car number from 1-6 that has
 		not yet been visited.
 	'''))
 	while visit_tally < 5:
-		if action not in cars_visited:
-			visit_tally += 1
-			cars_visited.append(action)
+		if action not in range(1,7):
 			action = int(input(f'''
+***
+		sorry, the hogwarts express does not have
+		a car {action}. please select another car
+		between 1-6 for {person.name} to enter.
+	'''))
+		else:
+			if action not in cars_visited:
+				visit_tally += 1
+				cars_visited.append(action)
+				action = int(input(f'''
 ***
 		{person.name} enters car {action}.
 
@@ -112,8 +123,8 @@ def navigate_hogwarts_express(person, train_dict):
 		what car do they visit next?
 		select a new car between 1-6.
 	'''))
-		else:
-			action = int(input(f'''
+			else:
+				action = int(input(f'''
 ***
 		{person.name} has already entered that car.
 
