@@ -1,6 +1,7 @@
 import hp_classes as hpc
 import hp_items as hpi
 import dalley_test as dat
+import express_test as ext
 import time
 import sys
 import random
@@ -272,6 +273,8 @@ while action.lower() != 'shops':
 print(dat.d_alley_get_items(user, hpi.year1_dg_alley_shops, hpi.shop_item_dict))
 
 # september first woooo
-time.sleep(2)
-print('***')
+time.sleep(1)
 print(hpi.september_1)
+
+h_express_cars = ext.generate_hogwarts_express(ext.express_dict, hpi.year_1_students)
+print(ext.navigate_hogwarts_express(user, h_express_cars))

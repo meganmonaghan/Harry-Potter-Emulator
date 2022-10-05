@@ -3,13 +3,14 @@ import hp_items as hpi
 import time
 import random
 
-test_train_dict = {}
-test_student_list = ['Hannah Abbott', 'Terry Boot', 'Vincent Crabbe',
-					'Gregory Goyle', 'Draco Malfoy', 'Ron Weasley',
-					'Hermione Granger', 'Ernie MacMillan', 'Anthony Goldstein',
-					'Susan Bones', 'Lavender Brown', 'Padma Patil',
-					'Parvati Patil', 'Pansy Parkinson', 'Seamus Finnegan',
-					'Dean Thomas', 'Neville Longbottom', 'Justin Finch-Fletchley']
+express_dict = {}
+# test_train_dict = {}
+# test_student_list = ['Hannah Abbott', 'Terry Boot', 'Vincent Crabbe',
+# 					'Gregory Goyle', 'Draco Malfoy', 'Ron Weasley',
+# 					'Hermione Granger', 'Ernie MacMillan', 'Anthony Goldstein',
+# 					'Susan Bones', 'Lavender Brown', 'Padma Patil',
+# 					'Parvati Patil', 'Pansy Parkinson', 'Seamus Finnegan',
+# 					'Dean Thomas', 'Neville Longbottom', 'Justin Finch-Fletchley']
 
 # create the train
 def generate_hogwarts_express(train_dict, student_list):
@@ -19,7 +20,7 @@ def generate_hogwarts_express(train_dict, student_list):
 			student_added = random.choice(student_list)
 			students_in_car.append(student_added)
 			student_list.remove(student_added)
-		test_train_dict[x] = students_in_car
+		train_dict[x] = students_in_car
 	return train_dict
 
 # actually go on the train
@@ -28,18 +29,20 @@ def navigate_hogwarts_express(person, train_dict):
 	visit_tally = 0
 	action = int(input(f'''
 ***
-		{person.name} enters the hogwarts express.
-		which car do they enter?
+		{person.name} follows the crowd of students
+		onto the Hogwarts Express, anxious to find a
+		car to stash their trunk.
+		Which car do they enter first?
 
-		select a car between 1-6.
+		Select a car between 1-6.
 	'''))
 	# first two cars visited
 	while visit_tally < 2:
 		if action not in range(1,7):
 			action = int(input(f'''
 ***
-		sorry, the hogwarts express does not have
-		a car {action}. please select a car between
+		Sorry, the Hogwarts Express does not have
+		a car {action}. Please select a car between
 		1-6 for {person.name} to enter.
 	'''))
 		else:
@@ -51,21 +54,22 @@ def navigate_hogwarts_express(person, train_dict):
 ***
 		{person.name} enters car {action}.
 
-		students in car:
+		There are three other students in the
+		car. They introduce themselves:
 		{', '.join(train_dict[action])}
 
 ***
 		{person.name} decides to visit another car.
 
-		what car do they visit next?
-		select a new car between 1-6.
+		Which car do they visit next?
+		Select a new car between 1-6.
 	'''))
 			else:
 				action = int(input(f'''
 ***
 		{person.name} has already entered that car.
 
-		please select another car between 1-6
+		Please select another car between 1-6
 		that {person.name} has not already visited.
 	'''))
 	while action not in cars_unvisited:
@@ -73,7 +77,7 @@ def navigate_hogwarts_express(person, train_dict):
 ***
 		{person.name} has already entered that car.
 
-		please select another car between 1-6
+		Please select another car between 1-6
 		that {person.name} has not already visited.
 	'''))
 	# successfully visit car 3
@@ -84,22 +88,22 @@ def navigate_hogwarts_express(person, train_dict):
 ***
 		{person.name} enters car {action}.
 
-		students in car:
+		Again, there are three students in 
+		the car:
 		{', '.join(train_dict[action])}
 	''')
 	# trolley witch choice
 	time.sleep(1)
 	action = input(f'''
 ***
-		as {person.name} leaves car {action}, they
-		see a kindly witch pushing a trolley along
-		the corridor. the trolley is piled high with
-		brightly-colored sweets, decadent pastries,
-		and ice-cold drinks.
+		As {person.name} leaves car {action}, they see a kindly
+		witch pushing a trolley along the corridor. The
+		 trolley is piled high with brightly-colored sweets,
+		 decadent pastries, and ice-cold drinks.
 
-		'anything off the trolley, dear?'
+		'Anything off the trolley, dear?'
 ***
-		buy snacks off the trolley? (Y/N)
+		Buy snacks off the trolley? (Y/N)
 	''')
 	if action.lower() == 'y':
 		time.sleep(1)
@@ -109,6 +113,7 @@ def navigate_hogwarts_express(person, train_dict):
 		continues to walk along the corridor towards
 		another car.
 	''')
+		print(person.add_to_inventory('Trolley Snacks'))
 	else:
 		time.sleep(1)
 		print(f'''
@@ -121,8 +126,8 @@ def navigate_hogwarts_express(person, train_dict):
 	time.sleep(1)	
 	action = int(input(f'''
 ***
-		which car does {person.name} enter
-		next? select a car number from 1-6 that has
+		Which car does {person.name} enter
+		next? Select a car number from 1-6 that has
 		not yet been visited.
 	'''))
 	# choosing car 4 and 5
@@ -130,8 +135,8 @@ def navigate_hogwarts_express(person, train_dict):
 		if action not in range(1,7):
 			action = int(input(f'''
 ***
-		sorry, the hogwarts express does not have
-		a car {action}. please select another car
+		Sorry, the Hogwarts Express does not have
+		a car {action}. Please select another car
 		between 1-6 for {person.name} to enter.
 	'''))
 		else:
@@ -143,20 +148,21 @@ def navigate_hogwarts_express(person, train_dict):
 ***
 		{person.name} enters car {action}.
 
-		students in car:
+		Three students are already in the car, 
+		deep in conversation:
 		{', '.join(train_dict[action])}
 ***
 		{person.name} decides to visit another car.
 
-		what car do they visit next?
-		select a new car between 1-6.
+		What car do they visit next?
+		Select a new car between 1-6.
 	'''))
 			else:
 				action = int(input(f'''
 ***
 		{person.name} has already entered that car.
 
-		please select another car between 1-6
+		Please select another car between 1-6
 		that {person.name} has not already visited.
 	'''))
 	time.sleep(1)
@@ -165,7 +171,7 @@ def navigate_hogwarts_express(person, train_dict):
 ***
 		{person.name} has already entered that car.
 
-		please select another car between 1-6
+		Please select another car between 1-6
 		that {person.name} has not already visited.
 	'''))
 	# after car five choice - robes
@@ -176,15 +182,18 @@ def navigate_hogwarts_express(person, train_dict):
 ***
 		{person.name} enters car {action}.
 
-		students in car:
+		The car has three occupants:
 		{', '.join(train_dict[action])}
+
+		They invite {person.name} to sit and talk
+		for a little while.
 	''')
 	time.sleep(1)
 	if 'Robes' in person.inventory:
 		print(f'''
 ***
-		as the ride continues, the daylight from
-		the windows begins to dim. lanterns are 
+		As the ride continues, the daylight from
+		the windows begins to dim. Lanterns are 
 		lit along the corridor. {person.name} can hear
 		the excited chattering of the other students.
 
@@ -192,16 +201,15 @@ def navigate_hogwarts_express(person, train_dict):
 
 		'Must be time to start getting ready.'
 
-		they withdraw the robes carefully packed in 
-		their trunk and get dressed. once their hat is
-		placed carefully on their head, they decide to
-		continue exploring the train.
+		{person.name} withdraws the robes carefully packed
+		in their trunk and get dressed, pointed black hat
+		placed carefully on their head.
 	''')
 	else:
 		print(f'''
 ***
-		as the ride continues, the daylight from
-		the windows begins to dim. lanterns are 
+		As the ride continues, the daylight from
+		the windows begins to dim. Lanterns are 
 		lit along the corridor. {person.name} can hear
 		the excited chattering of the other students.
 
@@ -209,16 +217,16 @@ def navigate_hogwarts_express(person, train_dict):
 
 		'Must be time to start getting ready.'
 
-		as the other students in car {action} begin
+		As the other students in car {action} begin
 		getting dressed, {person.name} is seized with
-		panic. they hadn't remembered to purchase robes
-		at diagon alley.
+		panic. They hadn't remembered to purchase robes
+		at Diagon Alley.
 
 		'Do you need to borrow a set of robes?'
 
-		it's {random.choice(train_dict[action])}, one of the students
-		in the car. they smile kindly and offer {person.name} a 
-		neat set of folded robes.
+		It's {random.choice(train_dict[action])}, one of the students
+		in the car. They smile and offer {person.name} a neat set 
+		of folded robes from their trunk.
 
 		'My parents were extra excited about me coming to
 		Hogwarts, so they packed me an extra set of everything.
@@ -229,15 +237,19 @@ def navigate_hogwarts_express(person, train_dict):
 	time.sleep(1)
 	action = int(input(f'''
 ***
-		which car does {person.name} enter next?
+		Robes donned, {person.name} is feeling more
+		and more excited about the evening to come. They
+		decide to walk off some of their excitement by 
+		visiting another car.
 
-		submit a new car number between 1-6.
+		Which car does {person.name} enter next?
+		Submit a new car number between 1-6.
 	'''))
 	if action not in range(1,7):
 		action = int(input(f'''
 ***
-		sorry, the hogwarts express does not have
-		a car {action}. please select another car
+		Sorry, the Hogwarts Express does not have
+		a car {action}. Please select another car
 		between 1-6 for {person.name} to enter.
 	'''))
 	else:
@@ -246,7 +258,7 @@ def navigate_hogwarts_express(person, train_dict):
 ***
 		{person.name} has already entered that car.
 
-		please select another car between 1-6
+		Please select another car between 1-6
 		that {person.name} has not already visited.
 	'''))
 	time.sleep(1)
@@ -254,22 +266,25 @@ def navigate_hogwarts_express(person, train_dict):
 ***
 		{person.name} enters car {action}.
 
-		students in car:
+		The students sitting in the car, robes on:
 		{', '.join(train_dict[action])}
 	''')
 	cars_unvisited.remove(action)
 	time.sleep(1)
 	print(f'''
 ***
-		trip is over! {person.name} is ready to leave
-		the hogwarts express.
+		As the Hogwarts Express comes to a slow stop, 
+		{person.name} looks through the nearest window. There
+		is little to see through the darkness, save for a
+		few flickering torches and the bustle of students
+		as they exit with their belongings.
 	''')
 	# return f'''
 	# 	cars left unvisited: {cars_unvisited}
-	'''
+	# '''
 
 if __name__ == '__main__':
-	h_express_cars = generate_hogwarts_express(test_train_dict, test_student_list)
+	h_express_cars = generate_hogwarts_express(express_dict, hpi.year_1_students)
 	user = hpc.Student('Megan')
 	# user.add_to_inventory('Robes')
 	print(navigate_hogwarts_express(user, h_express_cars))
