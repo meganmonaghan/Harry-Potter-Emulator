@@ -165,6 +165,8 @@ def d_alley_get_items(person, shop_list, shop_dict):
 		items_obtained.append(shop_dict[5].title())
 	person.can_do_magic = False
 	time.sleep(3)
+	for item in items_obtained:
+		person.add_to_inventory(item)
 	return f'''
 ***
 		As {person.name} finishes up their school shopping, they
@@ -176,3 +178,4 @@ if __name__ == '__main__':
 	user = hpc.Student('Megan')
 
 	print(d_alley_get_items(user, hpi.year1_dg_alley_shops, hpi.shop_item_dict))
+	print(user.inven())
