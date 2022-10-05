@@ -63,6 +63,13 @@ wand_properties = {
 					}
 
 september_1 = '''
+***
+		September First, King's Cross Station
+
+		After furtively following a group of people with trunks
+		through a solid metal barrier, Platform 9 3/4 has
+		materialized into view.
+
 		\x1B[3mChoo choo!\x1B[0m
 		All aboard the Hogwarts Express!
 
@@ -71,8 +78,14 @@ september_1 = '''
 		the corner, Kings Cross station disappears from view.
 
 		\x1B[3mchug, chug, chug...\x1B[0m
+	'''
 
-		Hours later, all the students have donned their robes. The
-		Howarts Express pulls into Hogsmeade station.
-		'''
+year_1_students = ['Hannah Abbott', 'Susan Bones', 'Terry Boot',
+					'Lavender Brown', 'Millicent Bullstrode', 'Michael Corner',
+					'Vincent Crabbe', 'Justin Finch-Fletchley', 'Seamus Finnegan',
+					'Anthony Goldstein', 'Gregory Goyle', 'Hermione Granger',
+					'Daphne Greengrass', 'Neville Longbottom', 'Ernie MacMillan',
+					'Draco Malfoy', 'Theodore Nott', 'Pansy Parkinson',
+					'Padma Patil', 'Parvati Patil', 'Sally-Anne Perks',
+					'Dean Thomas', 'Ron Weasley', 'Blaise Zabini']
 
