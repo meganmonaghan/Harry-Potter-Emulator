@@ -79,6 +79,7 @@ def navigate_hogwarts_express(person, train_dict):
 	# successfully visit car 3
 	cars_unvisited.remove(action)
 	visit_tally += 1
+	time.sleep(1)
 	print(f'''
 ***
 		{person.name} enters car {action}.
@@ -101,6 +102,7 @@ def navigate_hogwarts_express(person, train_dict):
 		buy snacks off the trolley? (Y/N)
 	''')
 	if action.lower() == 'y':
+		time.sleep(1)
 		print(f'''
 ***
 		{person.name} purchases a few snacks and
@@ -108,13 +110,15 @@ def navigate_hogwarts_express(person, train_dict):
 		another car.
 	''')
 	else:
+		time.sleep(1)
 		print(f'''
 ***
 		{person.name} is tempted by the snacks, but
 		ultimately decides against it. they
 		continue to walk along the corridor towards
 		another car.
-	''')	
+	''')
+	time.sleep(1)	
 	action = int(input(f'''
 ***
 		which car does {person.name} enter
@@ -167,6 +171,7 @@ def navigate_hogwarts_express(person, train_dict):
 	# after car five choice - robes
 	visit_tally +=1
 	cars_unvisited.remove(action)
+	time.sleep(1)
 	print(f'''
 ***
 		{person.name} enters car {action}.
@@ -174,6 +179,7 @@ def navigate_hogwarts_express(person, train_dict):
 		students in car:
 		{', '.join(train_dict[action])}
 	''')
+	time.sleep(1)
 	if 'Robes' in person.inventory:
 		print(f'''
 ***
@@ -218,8 +224,9 @@ def navigate_hogwarts_express(person, train_dict):
 		Hogwarts, so they packed me an extra set of everything.
 		You can keep these!'
 	''')
-		person.add_to_inventory('Secondhand Robes')
+		print(person.add_to_inventory('Secondhand Robes'))
 	# car six choice
+	time.sleep(1)
 	action = int(input(f'''
 ***
 		which car does {person.name} enter next?
@@ -242,6 +249,7 @@ def navigate_hogwarts_express(person, train_dict):
 		please select another car between 1-6
 		that {person.name} has not already visited.
 	'''))
+	time.sleep(1)
 	print(f'''
 ***
 		{person.name} enters car {action}.
@@ -250,15 +258,18 @@ def navigate_hogwarts_express(person, train_dict):
 		{', '.join(train_dict[action])}
 	''')
 	cars_unvisited.remove(action)
-	return f'''
+	time.sleep(1)
+	print(f'''
 ***
 		trip is over! {person.name} is ready to leave
 		the hogwarts express.
-
-		cars left unvisited: {cars_unvisited}
+	''')
+	# return f'''
+	# 	cars left unvisited: {cars_unvisited}
 	'''
 
 if __name__ == '__main__':
 	h_express_cars = generate_hogwarts_express(test_train_dict, test_student_list)
 	user = hpc.Student('Megan')
+	# user.add_to_inventory('Robes')
 	print(navigate_hogwarts_express(user, h_express_cars))
