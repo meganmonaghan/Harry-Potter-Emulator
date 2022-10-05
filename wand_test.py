@@ -122,7 +122,7 @@ def choose_wand(user):
 		'I remember every wand I've ever sold. It is curious that you
 		should be granted this wand when its brother belonged to the
 		greatest -- and darkest -- wizard of all time. I think we must
-		expect great things from you, {user.name}.'
+		expect equally great things from you, {user.name}.'
 	''')
 	return user_wand
 
