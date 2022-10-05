@@ -33,6 +33,7 @@ def navigate_hogwarts_express(person, train_dict):
 
 		select a car between 1-6.
 	'''))
+	# first two cars visited
 	while visit_tally < 2:
 		if action not in range(1,7):
 			action = int(input(f'''
@@ -67,7 +68,7 @@ def navigate_hogwarts_express(person, train_dict):
 		please select another car between 1-6
 		that {person.name} has not already visited.
 	'''))
-	if action not in cars_unvisited:
+	while action not in cars_unvisited:
 		action = int(input(f'''
 ***
 		{person.name} has already entered that car.
@@ -75,9 +76,9 @@ def navigate_hogwarts_express(person, train_dict):
 		please select another car between 1-6
 		that {person.name} has not already visited.
 	'''))
-	else:
-		cars_unvisited.remove(action)
-		visit_tally += 1
+	# successfully visit car 3
+	cars_unvisited.remove(action)
+	visit_tally += 1
 	print(f'''
 ***
 		{person.name} enters car {action}.
@@ -85,6 +86,7 @@ def navigate_hogwarts_express(person, train_dict):
 		students in car:
 		{', '.join(train_dict[action])}
 	''')
+	# trolley witch choice
 	time.sleep(1)
 	action = input(f'''
 ***
@@ -119,7 +121,8 @@ def navigate_hogwarts_express(person, train_dict):
 		next? select a car number from 1-6 that has
 		not yet been visited.
 	'''))
-	while visit_tally < 5:
+	# choosing car 4 and 5
+	while visit_tally < 4:
 		if action not in range(1,7):
 			action = int(input(f'''
 ***
@@ -153,6 +156,76 @@ def navigate_hogwarts_express(person, train_dict):
 		that {person.name} has not already visited.
 	'''))
 	time.sleep(1)
+	while action not in cars_unvisited:
+		action = int(input(f'''
+***
+		{person.name} has already entered that car.
+
+		please select another car between 1-6
+		that {person.name} has not already visited.
+	'''))
+	# after car five choice - robes
+	visit_tally +=1
+	cars_unvisited.remove(action)
+	print(f'''
+***
+		{person.name} enters car {action}.
+
+		students in car:
+		{', '.join(train_dict[action])}
+	''')
+	if 'Robes' in person.inventory:
+		print(f'''
+***
+		as the ride continues, the daylight from
+		the windows begins to dim. lanterns are 
+		lit along the corridor. {person.name} can hear
+		the excited chattering of the other students.
+
+		'We're nearly there!'
+
+		'Must be time to start getting ready.'
+
+		they withdraw the robes carefully packed in 
+		their trunk and get dressed. once their hat is
+		placed carefully on their head, they decide to
+		continue exploring the train.
+	''')
+	else:
+		print(f'''
+***
+		as the ride continues, the daylight from
+		the windows begins to dim. lanterns are 
+		lit along the corridor. {person.name} can hear
+		the excited chattering of the other students.
+
+		'We're nearly there!'
+
+		'Must be time to start getting ready.'
+
+		as the other students in car {action} begin
+		getting dressed, {person.name} is seized with
+		panic. they hadn't remembered to purchase robes
+		at diagon alley.
+
+		'Do you need to borrow a set of robes?'
+
+		it's {random.choice(train_dict[action])}, one of the students
+		in the car. they smile kindly and offer {person.name} a 
+		neat set of folded robes.
+
+		'My parents were extra excited about me coming to
+		Hogwarts, so they packed me an extra set of everything.
+		You can keep these!'
+	''')
+		person.add_to_inventory('Secondhand Robes')
+	# car six choice
+	action = int(input(f'''
+***
+		which car does {person.name} enter next?
+
+		submit a new car number between 1-6.
+	'''))
 	if action not in range(1,7):
 		action = int(input(f'''
 ***
@@ -161,16 +234,7 @@ def navigate_hogwarts_express(person, train_dict):
 		between 1-6 for {person.name} to enter.
 	'''))
 	else:
-		if action in cars_unvisited:
-			cars_unvisited.remove(action)
-			print(f'''
-***
-		{person.name} enters car {action}.
-
-		students in car:
-		{', '.join(train_dict[action])}
-	''')
-		else:
+		while action not in cars_unvisited:
 			action = int(input(f'''
 ***
 		{person.name} has already entered that car.
@@ -178,6 +242,14 @@ def navigate_hogwarts_express(person, train_dict):
 		please select another car between 1-6
 		that {person.name} has not already visited.
 	'''))
+	print(f'''
+***
+		{person.name} enters car {action}.
+
+		students in car:
+		{', '.join(train_dict[action])}
+	''')
+	cars_unvisited.remove(action)
 	return f'''
 ***
 		trip is over! {person.name} is ready to leave
