@@ -4,12 +4,13 @@ from wand_test import choose_wand, wand_options
 import time
 
 def d_alley_get_items(person, shop_list, shop_dict):
+	formatted_shops = '\n'.join(shop_list)
 	numbers_submitted = []
 	shops_visited = []
 	items_obtained = []
 	action = int(input(f'''
 ***
-		{', '.join(shop_list)}
+{formatted_shops}
 		
 		Please select a shop number to visit, or select
 		 '0' to leave Diagon Alley.
@@ -25,7 +26,8 @@ def d_alley_get_items(person, shop_list, shop_dict):
 				time.sleep(1)
 				action = int(input(f'''
 ***
-		Items purchased: {items_obtained}
+		Items purchased:
+		{', '.join(items_obtained)}
 
 		Please select a shop number to visit, or select
 		 '0' to leave Diagon Alley.
@@ -37,7 +39,7 @@ def d_alley_get_items(person, shop_list, shop_dict):
 		select '0' to leave Diagon Alley.
 		Enter '111' to check what {person.name} has purchased so far.
 
-		Shops visited: {shops_visited}
+		Shops visited: {', '.join(shops_visited)}
 	'''))
 		# shop submissions
 		elif action == 5 and action not in numbers_submitted:
@@ -54,13 +56,13 @@ def d_alley_get_items(person, shop_list, shop_dict):
 			time.sleep(1)
 			action = int(input(f'''
 ***
-		{', '.join(shop_list)}
+{formatted_shops}
 
 		Please select another shop number to visit, or
 		select '0' to leave Diagon Alley.
 		Enter '111' to check what {person.name} has purchased so far.
 
-		Shops visited: {shops_visited}
+		Shops visited: {', '.join(shops_visited)}
 	'''))
 		# shops with multiple items
 		elif action in [3, 4, 6]:
@@ -86,13 +88,13 @@ def d_alley_get_items(person, shop_list, shop_dict):
 ***
 		Congratulations on your new {pet_action}!
 
-		{', '.join(shop_list)}
+{formatted_shops}
 
 		Please select another shop number to visit, or
 		select '0' to leave Diagon Alley.
 		Enter '111' to check what {person.name} has purchased so far.
 
-		Shops visited: {shops_visited}
+		Shops visited: {', '.join(shops_visited)}
 	'''))
 				elif pet_action == '0':
 					time.sleep(1)
@@ -101,13 +103,13 @@ def d_alley_get_items(person, shop_list, shop_dict):
 ***
 		No pet selected.
 
-		{', '.join(shop_list)}
+{formatted_shops}
 
 		Please select another shop number to visit, or
 		select '0' to leave Diagon Alley.
 		Enter '111' to check what {person.name} has purchased so far.
 
-		Shops visited: {shops_visited}
+		Shops visited: {', '.join(shops_visited)}
 	'''))
 			else:
 				if action not in numbers_submitted and action != 111:
@@ -122,13 +124,13 @@ def d_alley_get_items(person, shop_list, shop_dict):
 		purchases their necessary items.
 
 ***
-		{', '.join(shop_list)}
+{formatted_shops}
 
 		Please select another shop number to visit, or
 		select '0' to leave Diagon Alley.
 		Enter '111' to check what {person.name} has purchased so far.
 
-		Shops visited: {shops_visited}
+		Shops visited: {', '.join(shops_visited)}
 	'''))
 		# shops with one item
 		else:
@@ -143,13 +145,13 @@ def d_alley_get_items(person, shop_list, shop_dict):
 		purchases their necessary items.
 
 ***
-		{', '.join(shop_list)}
+{formatted_shops}
 
 		Please select another shop number to visit, or
 		select '0' to leave Diagon Alley.
 		Enter '111' to check what {person.name} has purchased so far.
 
-		Shops visited: {shops_visited}
+		Shops visited: {', '.join(shops_visited)}
 	'''))
 	if 5 not in numbers_submitted:
 		time.sleep(1)
