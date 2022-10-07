@@ -80,7 +80,7 @@ september_1 = '''
 		\x1B[3mchug, chug, chug...\x1B[0m
 	'''
 
-year_1_students = ['Hannah Abbott', 'Susan Bones', 'Terry Boot',
+year1_students = ['Hannah Abbott', 'Susan Bones', 'Terry Boot',
 					'Lavender Brown', 'Millicent Bullstrode', 'Michael Corner',
 					'Vincent Crabbe', 'Justin Finch-Fletchley', 'Seamus Finnegan',
 					'Anthony Goldstein', 'Gregory Goyle', 'Hermione Granger',
