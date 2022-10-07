@@ -80,7 +80,7 @@ september_1 = '''
 		\x1B[3mchug, chug, chug...\x1B[0m
 	'''
 
-year1_students = ['Hannah Abbott', 'Susan Bones', 'Terry Boot',
+year1_student_list = ['Hannah Abbott', 'Susan Bones', 'Terry Boot',
 					'Lavender Brown', 'Millicent Bullstrode', 'Michael Corner',
 					'Vincent Crabbe', 'Justin Finch-Fletchley', 'Seamus Finnegan',
 					'Anthony Goldstein', 'Gregory Goyle', 'Hermione Granger',
@@ -89,3 +89,9 @@ year1_students = ['Hannah Abbott', 'Susan Bones', 'Terry Boot',
 					'Padma Patil', 'Parvati Patil', 'Sally-Anne Perks',
 					'Dean Thomas', 'Ron Weasley', 'Blaise Zabini']
 
+year1_student_dict = {}
+
+Gryffindor = []
+Hufflepuff = []
+Ravenclaw = []
+Slytherin = []
