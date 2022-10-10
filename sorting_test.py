@@ -54,6 +54,8 @@ if __name__ == '__main__':
 		'There are four houses at Hogwarts: Gryffindor, Hufflepuff,
 		Slytherin, and Ravenclaw.'
 	''')
+	m_mcgonagall = hpc.Professor('McGonagall', 'Transfiguration')
+	m_mcgonagall.assign_head('Gryffindor')
 	time.sleep(1)
 	action = input(f'''
 ***
@@ -103,7 +105,7 @@ if __name__ == '__main__':
 		them the pressure of answering.
 	''')
 	time.sleep(1)
-	print(f'''
+	action = input(f'''
 ***
 		Walking through the doors, the enormity of the Great
 		Hall emerges into view. There are candles suspended in
@@ -128,13 +130,110 @@ if __name__ == '__main__':
 		places it on the floor in view of the room. Upon it, she 
 		gently puts a ragged and patched hat with a wide brim.
 
+		Take a closer look at the hat.
+	''')
+	print(f'''
+***)
 		{user.name} is shocked when the brim opens wide, and the
 		hat - somehow - begins to sing.
 ***
 	''')
 	time.sleep(1)
 	print(hpi.year1_sorting_hat_song)
-	time.sleep(1)	
-
+	# other students are sorted
 	sort_students(hpi.year1_student_list, hpi.year1_student_dict)
+	# start actual student sorting
+	time.sleep(1)
+	action = input(f'''
+***
+		At the conclusion of the song, the seated students
+		and faculty applaud the hat. Professor McGonagall
+		approaches the stool with a long scroll.
+
+		'When your name is called, please step forward and
+		sit. Once you have been sorted, you will join your
+		fellow housemates at your assigned table.'
+
+		{user.name} glances nervously at the nearest table.
+		Up close, it's clear that some students are wearing
+		the same colors - these colors must be related to 
+		their house.
+
+		Enter any letter to continue.
+	''')
+	student1 = random.choice(hpi.year1_student_list)
+	student2 = random.choice(hpi.year1_student_list)
+	student3 = random.choice(hpi.year1_student_list)
+	student4 = random.choice(hpi.year1_student_list)
+	action = input(f'''
+***
+		'{student1.split()[1]}, {student1.split()[0]}.'
+
+		There is a small pause at the student walks
+		up and sits upon the stool, looking small. The
+		hat seems to deliberate for a moment, twitching
+		its brim and shifting.
+
+		'{(hpi.year1_student_dict[student1].house).upper()}!'
+
+		Look right to see the {hpi.year1_student_dict[student1].house} table.
+	''')
+	time.sleep(1)
+	action = input(f'''
+***
+		{user.name} looks to the right and sees {student1}
+		sitting at their new table. The surrounding students
+		seem welcoming.
+
+		'{student2.split()[1]}, {student2.split()[0]}.'
+
+		This time, the hat thinks (can a hat think?) for much
+		longer. {student2.split()[0]} fidgets on the stool,
+		looking petrified. Finally, the hat speaks.
+
+		'{(hpi.year1_student_dict[student2].house).upper()}!'
+
+		{student2.split()[0]} scampers off the stool and to their
+		table, nearly tripping on their overlong robes. {user.name}
+		wonders how small and nervous they'll look up on the stool.
+
+		'...{user.name}.'
+
+		Maybe the hat will be unable to sort {user.name} at all.
+		Could their time at Hogwarts be ended before term has
+		even begun?
+
+		{user.name} feels a nudge at their back. It's another
+		student from the train, {student3}.
+
+		'She's called your name.'
+
+		Walk towards the hat? (Y/N)
+	''')
+	time.sleep(1)
+	if action.lower() == 'y':
+		print(f'''
+***
+		{user.name} squares their shoulders, trying to look
+		as tall as possible, and cuts through the crowd and up
+		towards the stool.
+	''')
+	else:
+		print(f'''
+***
+		Before {user.name} can consciously move themself, the
+		crowd seems to move them forward. Suddenly they are
+		standing before the stool.
+	''')
+	time.sleep(1)
+	print(user.sort())
+	if user.house == 'Gryffindor':
+		hpi.Gryffindor.append(user.name)
+	elif user.house == 'Hufflepuff':
+		hpi.Hufflepuff.append(user.name)
+	elif user.house == 'Slytherin':
+		hpi.Slytherin.append(user.name)
+	else:
+		hpi.Ravenclaw.append(user.name)
+
 	print(return_houses_of_students(hpi.year1_student_dict))

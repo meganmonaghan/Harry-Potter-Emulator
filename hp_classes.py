@@ -32,9 +32,18 @@ class Student(Wizard):
 	def sort(self):
 		self.house = random.choice(houses)
 		return f'''
-		The Sorting Hat beckons.
+***
+		'{self.name}!'
+
+		The Sorting Hat beckons. {self.name} approaches and
+		sits on the small stool, feeling the eyes of the 
+		crowd upon them.
+
 		Sorting... sorting...
-		Congratulations! {self.name} has been sorted into {self.house}!
+		
+		'{self.name} has been sorted into...
+
+		{(self.house).upper()}!'
 		'''
 
 	# give a wand
@@ -53,6 +62,7 @@ class Student(Wizard):
 		if item.title() not in self.inventory:
 			self.inventory.append(item.title())
 			return f'''
+***
 		{item.title()} has been added to the inventory.'''
 			self.inven()
 
@@ -60,6 +70,7 @@ class Student(Wizard):
 	def access_item(self, item):
 		while item.title() not in self.inventory:
 			item = input('''
+***
 		Hmm... that item does not appear to be in your inventory.
 		Try again.
 	''')
@@ -80,12 +91,23 @@ class Professor(Wizard):
 	def give_points(self, char, points):
 		house_points[char.house] += points
 		num = house_points[char.house]
-		return f'{char.name} gained {points} points for {char.house}! New total: {num}'
+		return f'''
+***
+		{char.name} gained {points} points for {char.house}!
+		New total: {num}'
+	'''
 
 	def take_points(self, char, points):
 		house_points[char.house] -= points
 		num = house_points[char.house]
-		return f'{char.name} lost {points} points for {char.house}. New total: {num}'
+		return f'''
+***
+		{char.name} lost {points} points for {char.house}.
+		New total: {num}'
+	'''
+
+	def assign_head(self, house):
+			self.house = house
 
 house_points = {'Gryffindor': 0,
 				'Ravenclaw': 0, 
@@ -94,5 +116,8 @@ house_points = {'Gryffindor': 0,
 
 def display_points(house):
 	num = house_points[house]
-	return f'{house} has {num} points.'
+	return f'''
+***
+		{house} has {num} points.
+	'''
 
