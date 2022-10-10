@@ -162,7 +162,7 @@ def d_alley_get_items(person, shop_list, shop_dict):
 	''')
 		time.sleep(1)
 		user_wand = choose_wand(person)
-		user.get_wand(user_wand)
+		person.get_wand(user_wand)
 		numbers_submitted.append(5)
 		items_obtained.append(shop_dict[5].title())
 	person.can_do_magic = False

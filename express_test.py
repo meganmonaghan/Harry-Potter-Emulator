@@ -279,12 +279,10 @@ def navigate_hogwarts_express(person, train_dict):
 		few flickering torches and the bustle of students
 		as they exit with their belongings.
 	''')
-	# return f'''
-	# 	cars left unvisited: {cars_unvisited}
-	# '''
+	return train_dict
 
 if __name__ == '__main__':
-	h_express_cars = generate_hogwarts_express(express_dict, hpi.year_1_students)
+	h_express_cars = generate_hogwarts_express(express_dict, hpi.year1_student_list)
 	user = hpc.Student('Megan')
 	# user.add_to_inventory('Robes')
 	print(navigate_hogwarts_express(user, h_express_cars))
