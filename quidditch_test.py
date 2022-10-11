@@ -136,11 +136,19 @@ def quidditch_match(team1, team2):
 		Player 1: {player1}
 		Player 2: {player2}
 	''')
+	if team1_score > team2_score:
+		winner = 'Team1'
+	elif team2_score > team1_score:
+		winner = 'Team2'
+	else:
+		winner = 'Tied game!'
 	return f'''
 ***
 		End result:
 		Team1: {team1_score}
 		Team2: {team2_score}
+
+		Winner: {winner}
 	'''
 
 print(quidditch_match(test_team_1, test_team_2))
