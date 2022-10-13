@@ -114,10 +114,10 @@ house_points = {'Gryffindor': 0,
 				'Hufflepuff': 0, 
 				'Slytherin': 0}
 
-def display_points(house):
-	num = house_points[house]
-	return f'''
+def display_points():
+	for x in house_points.keys():
+		print(f'''
 ***
-		{house} has {num} points.
-	'''
+		{x} has {house_points[x]} points.
+	''')
 

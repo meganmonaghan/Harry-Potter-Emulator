@@ -17,7 +17,9 @@ def quidditch_match(team1, team2):
 	global player_options
 	in_progress = True
 	team1_score = 0
+	team1_snitch_score = 0
 	team2_score = 0
+	team2_snitch_score = 0
 
 	offense = team2
 	defense = team1
@@ -32,7 +34,7 @@ def quidditch_match(team1, team2):
 ***
 		Team 1's seeker has caught the snitch!
 	''')
-				team1_score += 150
+				team1_snitch_score += 150
 				in_progress = False
 				break
 			elif team2['seeker'][0] == seeker_match:
@@ -40,7 +42,7 @@ def quidditch_match(team1, team2):
 ***
 		Team 2's seeker has caught the snitch!
 	''')
-				team2_score += 150
+				team2_snitch_score += 150
 				in_progress = False
 				break
 			else:
@@ -136,19 +138,25 @@ def quidditch_match(team1, team2):
 		Player 1: {player1}
 		Player 2: {player2}
 	''')
+	# adding house points
 	if team1_score > team2_score:
 		winner = 'Team1'
 	elif team2_score > team1_score:
 		winner = 'Team2'
 	else:
 		winner = 'Tied game!'
-	return f'''
+	print(f'''
 ***
 		End result:
-		Team1: {team1_score}
-		Team2: {team2_score}
+		Team1: {team1_score + team1_snitch_score}
+		Team2: {team2_score + team2_snitch_score}
 
 		Winner: {winner}
-	'''
+	''')
+	return [team1_score, team2_score]
 
-print(quidditch_match(test_team_1, test_team_2))
+game_1 = quidditch_match(test_team_1, test_team_2)
+hpc.house_points['Gryffindor'] += game_1[0]
+hpc.house_points['Slytherin'] += game_1[1]
+
+print(hpc.display_points())
