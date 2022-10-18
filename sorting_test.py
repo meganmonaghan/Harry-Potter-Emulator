@@ -36,8 +36,7 @@ def return_houses_of_students(student_dict):
 		{', '.join(hpi.Ravenclaw)}
 	'''
 
-if __name__ == '__main__':
-	user = hpc.Student('Megan')
+def sorting_block(user):
 	print(f'''
 ***
 		{user.name} follows the line of students heading into
@@ -97,7 +96,7 @@ if __name__ == '__main__':
 		after all?
 	''')
 	else:
-		print(f'''
+			print(f'''
 ***
 		{user.name} considers the question, but ultimately does not
 		know what to say. Thankfully, a moment later the crowd
@@ -129,7 +128,7 @@ if __name__ == '__main__':
 		The severe-looking woman brings out a rickety stool and
 		places it on the floor in view of the room. Upon it, she 
 		gently puts a ragged and patched hat with a wide brim.
-
+	
 		Take a closer look at the hat.
 	''')
 	print(f'''
@@ -235,5 +234,12 @@ if __name__ == '__main__':
 		hpi.Slytherin.append(user.name)
 	else:
 		hpi.Ravenclaw.append(user.name)
+
+	return user.house
+
+if __name__ == '__main__':
+	user = hpc.Student('Megan')
+
+	print(sorting_block(user))
 
 	print(return_houses_of_students(hpi.year1_student_dict))

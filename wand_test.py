@@ -130,5 +130,6 @@ if __name__ == 'main':
 	user_name = input('What is your name? ')
 	test_user = hpc.Student(user_name)
 
+	print(choose_wand(test_user))
 	test_user.add_to_inventory('Wand', choose_wand(test_user))
 	print(test_user.inven())
