@@ -35,6 +35,10 @@ def class_lesson(level, user):
 	1. Charms, 2. Transfiguration, 3. Potions,
 	4. Defense Against the Dark Arts, 5 . History of Magic
 '''))
+	if subject == 0:
+		return f'''
+	{user.name} is done studying for today!
+	'''
 	ques = level_qs[subject][level][0]
 	ans = level_qs[subject][level][1]
 	user_input = input(f'''

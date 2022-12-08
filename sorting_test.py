@@ -160,10 +160,15 @@ def sorting_block(user):
 
 		Enter any letter to continue.
 	''')
+	first_students = []
 	student1 = random.choice(hpi.year1_student_list)
+	hpi.year1_student_list.remove(student1)
 	student2 = random.choice(hpi.year1_student_list)
+	hpi.year1_student_list.remove(student2)
 	student3 = random.choice(hpi.year1_student_list)
+	hpi.year1_student_list.remove(student3)
 	student4 = random.choice(hpi.year1_student_list)
+	hpi.year1_student_list.remove(student4)
 	action = input(f'''
 ***
 		'{student1.split()[1]}, {student1.split()[0]}.'

@@ -278,7 +278,7 @@ time.sleep(1)
 print(hpi.september_1)
 
 h_express_cars = ext.generate_hogwarts_express(ext.express_dict, hpi.year1_student_list)
-print(ext.navigate_hogwarts_express(user, h_express_cars))
+ext.navigate_hogwarts_express(user, h_express_cars)
 
 # sorting block
-print(srt.sorting_block(user))
+srt.sorting_block(user)

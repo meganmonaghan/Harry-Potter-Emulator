@@ -83,7 +83,8 @@ def d_alley_get_items(person, shop_list, shop_dict):
 				if pet_action in shop_dict[6]:
 					time.sleep(1)
 					items_obtained.append(pet_action.title())
-					shops_visited.append((shop_list[5][3:]))
+					if action not in numbers_submitted:
+						shops_visited.append((shop_list[5][3:]))
 					action = int(input(f'''
 ***
 		Congratulations on your new {pet_action}!
