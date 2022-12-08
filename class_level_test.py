@@ -12,5 +12,5 @@ class LinkedList:
 	def __init__(self):
 		self.head = None
 
-course_levels = [1, 2, 3, 4, 5, 6]
+course_levels = [1, 2, 3, 4, 5]
 course_linked_list = []
