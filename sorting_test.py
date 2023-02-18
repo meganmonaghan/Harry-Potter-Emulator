@@ -109,7 +109,7 @@ def sorting_block(user):
 		Walking through the doors, the enormity of the Great
 		Hall emerges into view. There are candles suspended in
 		air, casting a warm, active light over the room. The
-		ceiling perfectly reflects the night sky. Smoky-looking 
+		ceiling perfectly reflects the night sky: smoky-looking 
 		clouds swirl and a few stars twinkle weakly.
 
 		The row of students walks down the center of the
@@ -123,7 +123,7 @@ def sorting_block(user):
 		looking witch with dirty hands and flyaway hair, a thin
 		man with a large turban that overwhelms his skinny frame,
 		a sallow-skinned wizard whose hooked nose and lank hair
-		looked decidedly unfriendly.
+		look decidedly unfriendly.
 
 		The severe-looking woman brings out a rickety stool and
 		places it on the floor in view of the room. Upon it, she 
