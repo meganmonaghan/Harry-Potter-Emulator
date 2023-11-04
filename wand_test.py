@@ -115,7 +115,7 @@ def choose_wand(user):
 		'Yes, indeed! Very good, very good. And curious...'
 	''')
 	time.sleep(1)
-	print(f''')
+	print(f'''
 		He takes the wand from {user.name} and packs it carefully in
 		its box. Ollivander fixes them with his pale stare.
 

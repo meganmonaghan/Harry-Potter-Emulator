@@ -5,7 +5,7 @@ import hp_classes as hpc
 # questions for each subject and level
 level_qs = {
 	1 : {1: ('Who is the Charms Professor at Hogwarts?', 'Flitwick'),
-		2: ('question', 'answer'),
+		2: ('What does the Wingardium Leviosa charm do?', 'fly'),
 		3: ('What is the incantation to make an object fly?', 'Wingardium Leviosa'),
 		4: ('Describe the wand movement required to make an object fly.', 'swish and flick'),
 		5: ("Who is the author of 'The Standard Book of Spells (Grade 1)'?", 'Goshawk')},

@@ -31,7 +31,7 @@ class Student(Wizard):
 	# sort into house
 	def sort(self):
 		self.house = random.choice(houses)
-		return f'''
+		print(f'''
 ***
 		'{self.name}!'
 
@@ -44,7 +44,7 @@ class Student(Wizard):
 		'{self.name} has been sorted into...
 
 		{(self.house).upper()}!'
-		'''
+		''')
 
 	# give a wand
 	def get_wand(self, wand_item):
@@ -52,19 +52,19 @@ class Student(Wizard):
 
 	# display inventory
 	def inven(self):
-		return f'''
+		print(f'''
 ***
 		Inventory:
-		{', '.join(self.inventory)}'''
+		{', '.join(self.inventory)}''')
 
 
 	def add_to_inventory(self, item):
 		if item.title() not in self.inventory:
 			self.inventory.append(item.title())
-			return f'''
+			print(f'''
 ***
-		{item.title()} has been added to the inventory.'''
-			self.inven()
+		{item.title()} has been added to the inventory.''')
+			return self.inven()
 
 
 	def access_item(self, item):
